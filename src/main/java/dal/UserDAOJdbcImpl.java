@@ -24,7 +24,7 @@ public class UserDAOJdbcImpl implements UserDAO {
 			
 			ResultSet rs = ps.executeQuery();
 			
-			while(rs.next()) {
+			if(rs.next()) {
 				User loggedUser = new User();
 				loggedUser.setNo_user(rs.getInt("no_utilisateur"));
 				loggedUser.setPseudo(rs.getString("pseudo"));
@@ -40,6 +40,8 @@ public class UserDAOJdbcImpl implements UserDAO {
 				loggedUser.setAdmin(rs.getBoolean("administrateur"));
 				
 				result = loggedUser;
+			} else {
+				result = null;
 			}
 			
 		} catch (SQLException e) {

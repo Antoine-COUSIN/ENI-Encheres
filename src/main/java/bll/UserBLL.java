@@ -13,7 +13,15 @@ public class UserBLL {
 	}
 	
 	public User login(String login, String password) {
-		return userDAO.login(login, password);
+		User user = new User();
+		user = userDAO.login(login, password);
+		
+		if (user != null) {
+			return user;
+		} else {
+			return null;
+		}
+		
 	}
 	
 }

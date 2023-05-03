@@ -10,12 +10,3 @@
 
 /******************************************************/
 /* LOGIN JSP */
-.login-container {
-	display: flex;
-	flex-direction: colunm;
-	justify-content: center;
-	align-items: center;
-	width: 100vw;
-	height: 300px;
-	background-color: lightblue;
-}

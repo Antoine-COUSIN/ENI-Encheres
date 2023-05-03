@@ -1,16 +1,21 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-<link href="<%=request.getContextPath() %>/styles/styles.css" rel="stylesheet" />
-</head>
-<body>
-
 <%@include file="../fragments/header.jspf" %>
+
+
+<c:if test="${!empty errors }">
+	<h3>Erreur de saisie</h3>
+	<ul>
+		<c:forEach var="code" items="${ errors }">
+			<c:choose>
+				<c:when test="${code == 1 }">
+					<li>Le pseudo ou l'addresse mail est mal renseigné</li>
+				</c:when>
+				<c:when test="${code == 2 }">
+					<li>Le mot de passe est mal renseigné</li>
+				</c:when>
+			</c:choose>
+		</c:forEach>
+	</ul>
+</c:if>
 
 
 <div class="login-container">
@@ -38,6 +43,4 @@
 </div>
 
 
-
-</body>
-</html>
+<%@include file="../fragments/footer.jspf" %>

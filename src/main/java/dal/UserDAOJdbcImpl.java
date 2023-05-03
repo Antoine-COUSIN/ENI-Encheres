@@ -10,6 +10,7 @@ import bo.User;
 public class UserDAOJdbcImpl implements UserDAO {
 
 	private static final String LOGIN = "SELECT * FROM UTILISATEURS WHERE (pseudo = ? OR email = ?) AND mot_de_passe = ?";
+	private static final String CREATE_USER = "INSERT INTO UTILISATEURS VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	
 	@Override
 	public User login(String pseudoOrEmail, String password) {
@@ -49,6 +50,32 @@ public class UserDAOJdbcImpl implements UserDAO {
 		}
 		
 		return result;
+	}
+
+	@Override
+	public void createUser(User user) {
+		try (Connection cnx = ConnectionProvider.getConnection();) {
+			
+			PreparedStatement ps = cnx.prepareStatement(CREATE_USER);
+			
+			ps.setString(1, user.getPseudo());
+			ps.setString(2, user.getLastName());
+			ps.setString(3, user.getFirstName());
+			ps.setString(4, user.getEmail());
+			ps.setString(5, user.getPhoneNumber());
+			ps.setString(6, user.getStreetAddress());
+			ps.setString(7, Integer.toString(user.getPostalCodeAddress()));
+			ps.setString(8, user.getCityAddress());
+			ps.setString(9, user.getPassword());
+			ps.setInt(10, user.getCredit());
+			ps.setBoolean(11, user.isAdmin());
+			
+			ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 }

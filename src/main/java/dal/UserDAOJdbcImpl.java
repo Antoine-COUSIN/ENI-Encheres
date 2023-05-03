@@ -1,11 +1,13 @@
 package dal;
 
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import bo.User;
+import util.PasswordUtil;
 
 public class UserDAOJdbcImpl implements UserDAO {
 
@@ -25,6 +27,7 @@ public class UserDAOJdbcImpl implements UserDAO {
 			ps.setString(2, pseudoOrEmail);
 			ps.setString(3, password);
 			
+			
 			ResultSet rs = ps.executeQuery();
 			
 			if(rs.next()) {
@@ -38,7 +41,14 @@ public class UserDAOJdbcImpl implements UserDAO {
 				loggedUser.setStreetAddress(rs.getString("rue"));
 				loggedUser.setPostalCodeAddress(rs.getString("code_postal"));
 				loggedUser.setCityAddress(rs.getString("ville"));
-				loggedUser.setPassword(rs.getString("mot_de_passe"));
+				
+				try {
+					loggedUser.setPassword(PasswordUtil.hashPassword(rs.getString("mot_de_passe")));
+				} catch (NoSuchAlgorithmException e) {
+					
+					e.printStackTrace();
+				}
+				
 				loggedUser.setCredit(rs.getInt("credit"));
 				loggedUser.setAdmin(rs.getBoolean("administrateur"));
 				
@@ -55,10 +65,11 @@ public class UserDAOJdbcImpl implements UserDAO {
 	}
 
 	@Override
-	public void createUser(User user) {
+	public boolean createUser(User user) {
+		boolean result = false;
 		try (Connection cnx = ConnectionProvider.getConnection();) {
 			
-			PreparedStatement ps = cnx.prepareStatement(CREATE_USER);
+			PreparedStatement ps = cnx.prepareStatement(CREATE_USER, PreparedStatement.RETURN_GENERATED_KEYS);
 			
 			ps.setString(1, user.getPseudo());
 			ps.setString(2, user.getLastName());
@@ -74,9 +85,16 @@ public class UserDAOJdbcImpl implements UserDAO {
 			
 			ps.executeUpdate();
 			
+			ResultSet rs = ps.getGeneratedKeys();
+			if (rs.next()) {
+				result = true;
+			} else {
+				result = false;
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return result;
 		
 	}
 

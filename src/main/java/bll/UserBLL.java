@@ -17,6 +17,7 @@ import dal.UserDAO;
  *                 
  *                 10 -> existing pseudo
  *                 11 -> existing email
+ *                 20 -> error during creation
  */		
 
 public class UserBLL {
@@ -39,9 +40,12 @@ public class UserBLL {
 	}
 	
 	public void createUser(User user) throws UserBLLException {
+		UserBLLException e = new UserBLLException();
 		checkValues(user);
 		verifyExistingValues(user);
-		userDAO.createUser(user);
+		if (!userDAO.createUser(user)) {
+			e.addError(20);
+		}
 	}
 	
 	

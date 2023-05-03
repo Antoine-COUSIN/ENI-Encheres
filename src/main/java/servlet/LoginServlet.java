@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import bll.UserBLL;
 import bll.UserBLLException;
 import bo.User;
+import util.PasswordUtil;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
@@ -29,8 +32,17 @@ public class LoginServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String pLogin = request.getParameter("login");
-		String pPassword = request.getParameter("password");
-		
+		//String pPassword = request.getParameter("password");
+		String pPassword = null;
+		try {
+			pPassword = request.getParameter("password");
+			if ((!pPassword.isEmpty()) || (!pPassword.equals(""))) {
+				pPassword = PasswordUtil.hashPassword(request.getParameter("password"));
+			}
+			
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
 		
 		User loggedUser;
 		try {

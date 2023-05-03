@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import bll.UserBLL;
+import bll.UserBLLException;
 import bo.User;
 
 @WebServlet("/login")
@@ -30,16 +31,26 @@ public class LoginServlet extends HttpServlet {
 		String pLogin = request.getParameter("login");
 		String pPassword = request.getParameter("password");
 		
-		System.out.println("info from loginServlet -> " + pLogin + " " + pPassword);
 		
-		User loggedUser = new User();
-		loggedUser = userBLL.login(pLogin, pPassword);
-		
-		if (loggedUser != null) {
-			System.out.println("connected with " + pLogin);
-			request.getRequestDispatcher("WEB-INF/jsp/accueil.jsp").forward(request, response);
-		} else {
+		User loggedUser;
+		try {
+			loggedUser = userBLL.login(pLogin, pPassword);
+			if (loggedUser != null) {
+				System.out.println("connected with " + pLogin);
+				request.setAttribute("loggedUser", loggedUser);
+				request.setAttribute("isConnected", true);
+				request.getRequestDispatcher("WEB-INF/jsp/liste-encheres.jsp").forward(request, response);
+			} else {
+				System.out.println("user does not exist");
+				request.setAttribute("logError", true);
+				request.setAttribute("isConnected", false);
+				request.getRequestDispatcher("WEB-INF/jsp/login.jsp").forward(request, response);
+			}
+			
+		} catch (UserBLLException e) {
 			System.out.println("user does not exist");
+			request.setAttribute("errors", e.getErrors());
+			request.setAttribute("isConnected", false);
 			request.getRequestDispatcher("WEB-INF/jsp/login.jsp").forward(request, response);
 		}
 		

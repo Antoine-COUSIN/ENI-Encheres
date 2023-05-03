@@ -1,17 +1,27 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-<link href="<%=request.getContextPath() %>/styles/styles.css" rel="stylesheet" />
-</head>
-<body>
-
 <%@include file="../fragments/header.jspf" %>
 
+
+<%-- <c:if test="${!empty errors }">
+	<h3>Erreur de saisie</h3>
+	<ul>
+		<c:forEach var="code" items="${ errors }">
+			<c:choose>
+				<c:when test="${code == 1 }">
+					<li>Le pseudo ou l'addresse mail est mal renseigné</li>
+				</c:when>
+				<c:when test="${code == 2 }">
+					<li>Le mot de passe est mal renseigné</li>
+				</c:when>
+			</c:choose>
+		</c:forEach>
+	</ul>
+</c:if> --%>
+
+<%@include file="../fragments/errors.jspf" %>
+
+<c:if test="${ logError }">
+	<h3>Erreur de connexion, veuillez vérifier votre mot de passe ou votre identifiant</h2>
+</c:if>
 
 <div class="login-container">
 	<form action="login" method="POST">
@@ -35,9 +45,9 @@
 			</div>
 		</div>
   	</form>
+  	
+  	<a href="createUser">Créer un compte</a>
 </div>
 
 
-
-</body>
-</html>
+<%@include file="../fragments/footer.jspf" %>

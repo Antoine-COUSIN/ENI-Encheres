@@ -9,6 +9,7 @@
 <body>
 		
 	<h1>Bien connecté, bravo</h1>
+	<p>Bonjour ${loggedUser.getFirstName() }</p>
 		
 </body>
 </html>

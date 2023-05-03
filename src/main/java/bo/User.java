@@ -9,18 +9,18 @@ public class User {
 	private String email;
 	private String phoneNumber;
 	private String streetAddress;
-	private int postalCodeAddress;
+	private String postalCodeAddress;
 	private String cityAddress;
 	private String password;
-	private int credit;
-	private boolean admin;
+	private int credit = 0;
+	private boolean admin = false;
 	
 	public User() {
 		
 	}
 	
 	public User(int no_user, String pseudo, String lastName, String firstName, String email, String phoneNumber,
-			String streetAddress, int postalCodeAddress, String cityAddress, String password, int credit,
+			String streetAddress, String postalCodeAddress, String cityAddress, String password, int credit,
 			boolean admin) {
 		super();
 		this.no_user = no_user;
@@ -93,11 +93,11 @@ public class User {
 		this.streetAddress = streetAddress;
 	}
 
-	public int getPostalCodeAddress() {
+	public String getPostalCodeAddress() {
 		return postalCodeAddress;
 	}
 
-	public void setPostalCodeAddress(int postalCodeAddress) {
+	public void setPostalCodeAddress(String postalCodeAddress) {
 		this.postalCodeAddress = postalCodeAddress;
 	}
 

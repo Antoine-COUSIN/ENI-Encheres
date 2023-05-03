@@ -1,0 +1,43 @@
+<c:if test="${!empty errors }">
+	<h3>Erreur de saisie</h3>
+	<ul>
+		<c:forEach var="code" items="${ errors }">
+			<c:choose>
+				<c:when test="${code == 1 }">
+					<li>Le pseudo ou l'addresse mail est mal renseigné</li>
+				</c:when>
+				<c:when test="${code == 2 }">
+					<li>Le mot de passe est mal renseigné</li>
+				</c:when>
+				<c:when test="${code == 3 }">
+					<li>Le prénom est mal renseigné</li>
+				</c:when>
+				<c:when test="${code == 4 }">
+					<li>Le numéro de téléphone est mal renseigné</li>
+				</c:when>
+				<c:when test="${code == 5 }">
+					<li>Le code postal est mal renseigné</li>
+				</c:when>
+				<c:when test="${code == 6 }">
+					<li>Le nom de famille est mal renseigné</li>
+				</c:when>
+				<c:when test="${code == 7 }">
+					<li>L'email est mal renseigné</li>
+				</c:when>
+				<c:when test="${code == 8 }">
+					<li>L'addresse est mal renseignée</li>
+				</c:when>
+				<c:when test="${code == 9}">
+					<li>La ville est mal renseignée</li>
+				</c:when>
+				
+				<c:when test="${code == 10 }">
+					<li>Un utilisateur avec ce pseudo existe déjà</li>
+				</c:when>
+				<c:when test="${code == 11 }">
+					<li>Un utilisateur avec cet email existe déjà</li>
+				</c:when>
+			</c:choose>
+		</c:forEach>
+	</ul>
+</c:if>

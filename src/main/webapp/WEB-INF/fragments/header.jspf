@@ -11,7 +11,33 @@
 </head>
 <body>
 
-<h1>ENI-Enchères</h1>
+<div class="header-nav">
+	<div class="title">
+		<h1>ENI-Enchères</h1>
+	</div>
+	
+	<div class="nav-links">
+		<c:choose>
+			<c:when test="${ isConnected }">
+				<ul>
+					<li class="nav-li">
+						<a href="#">Enchères</a>
+					</li>
+					<li class="nav-li">
+						<a href="#">Vendre un article</a>
+					</li>
+					<li class="nav-li">
+						<a href="#">Mon profil</a>
+					</li>
+					<li class="nav-li">
+						<a href="#">Deconnexion</a>
+					</li>
+				</ul>
+			</c:when>
+		</c:choose>
+	</div>
+</div>
+
 
 </body>
 </html>

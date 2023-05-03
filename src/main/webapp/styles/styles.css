@@ -7,6 +7,27 @@
 	box-sizing: border-box;
 }
 
+/******************************************/
+/* HEADER */
+.header-nav {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.nav-links ul {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-around;
+}
+.nav-li {
+	list-style-type: none;
+}
+
 
 /******************************************************/
 /* LOGIN JSP */
+
+

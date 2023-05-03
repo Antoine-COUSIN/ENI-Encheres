@@ -1,7 +1,7 @@
 <%@include file="../fragments/header.jspf" %>
 
 
-<c:if test="${!empty errors }">
+<%-- <c:if test="${!empty errors }">
 	<h3>Erreur de saisie</h3>
 	<ul>
 		<c:forEach var="code" items="${ errors }">
@@ -15,8 +15,13 @@
 			</c:choose>
 		</c:forEach>
 	</ul>
-</c:if>
+</c:if> --%>
 
+<%@include file="../fragments/errors.jspf" %>
+
+<c:if test="${ logError }">
+	<h3>Erreur de connexion, veuillez vérifier votre mot de passe ou votre identifiant</h2>
+</c:if>
 
 <div class="login-container">
 	<form action="login" method="POST">
@@ -40,6 +45,8 @@
 			</div>
 		</div>
   	</form>
+  	
+  	<a href="createUser">Créer un compte</a>
 </div>
 
 

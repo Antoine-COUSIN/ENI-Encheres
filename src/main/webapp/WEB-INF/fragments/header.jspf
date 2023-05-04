@@ -34,6 +34,17 @@
 					</li>
 				</ul>
 			</c:when>
+			
+			<c:when test="${ !isConnected }">
+				<ul>
+					<li class="nav-li">
+						<a href="#">S'inscrire</a>
+					</li>
+					<li class="nav-li">
+						<a href="#">Se connecter</a>
+					</li>
+				</ul>
+			</c:when>
 		</c:choose>
 	</div>
 </div>

@@ -7,7 +7,7 @@
 
 <%@include file="../fragments/errors.jspf" %>
 <c:if test="${ logError }">
-	<h3>Echec de la création, les 2 mots de passe ne correpondent pas</h2>
+	<h3>Echec de la création, les 2 mots de passe ne correpondent pas</h3>
 </c:if>
 
 <form method="POST" action="createUser">

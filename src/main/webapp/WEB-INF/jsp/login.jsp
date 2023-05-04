@@ -1,21 +1,6 @@
 <%@include file="../fragments/header.jspf" %>
 
 
-<%-- <c:if test="${!empty errors }">
-	<h3>Erreur de saisie</h3>
-	<ul>
-		<c:forEach var="code" items="${ errors }">
-			<c:choose>
-				<c:when test="${code == 1 }">
-					<li>Le pseudo ou l'addresse mail est mal renseigné</li>
-				</c:when>
-				<c:when test="${code == 2 }">
-					<li>Le mot de passe est mal renseigné</li>
-				</c:when>
-			</c:choose>
-		</c:forEach>
-	</ul>
-</c:if> --%>
 
 <%@include file="../fragments/errors.jspf" %>
 
@@ -48,6 +33,7 @@
   	
   	<a href="createUser">Créer un compte</a>
 </div>
+
 
 
 <%@include file="../fragments/footer.jspf" %>

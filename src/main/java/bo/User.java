@@ -12,7 +12,7 @@ public class User {
 	private String postalCodeAddress;
 	private String cityAddress;
 	private String password;
-	private int credit = 0;
+	private int credit = 100;
 	private boolean admin = false;
 	
 	public User() {

@@ -28,8 +28,8 @@ public class HomePageServlet extends HttpServlet {
 		List<Category> categories = articleBLL.listCategories();
 		List<Item> articles = articleBLL.listArticles();
 		
-		request.setAttribute("categories", categories);
-		request.setAttribute("articles", articles);
+		request.getSession().setAttribute("categories", categories);
+		request.getSession().setAttribute("articles", articles);
 		
 		request.getRequestDispatcher("WEB-INF/jsp/accueil.jsp").forward(request, response);
 	}

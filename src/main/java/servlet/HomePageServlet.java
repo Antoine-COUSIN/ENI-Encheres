@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import bll.ArticleBLL;
 import bo.Category;
+import bo.Item;
 
 
 @WebServlet("/homepage")
@@ -24,9 +25,11 @@ public class HomePageServlet extends HttpServlet {
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Category> caterogies = articleBLL.listCategories();
+		List<Category> categories = articleBLL.listCategories();
+		List<Item> articles = articleBLL.listArticles();
 		
-		request.setAttribute("categories", caterogies);
+		request.setAttribute("categories", categories);
+		request.setAttribute("articles", articles);
 		
 		request.getRequestDispatcher("WEB-INF/jsp/accueil.jsp").forward(request, response);
 	}

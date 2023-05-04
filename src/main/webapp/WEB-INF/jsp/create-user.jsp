@@ -63,7 +63,7 @@
 	
 	<div>
 		<input type="submit" value="Créer"/>
-		<a href="login">Annuler</a>
+		<a href="homePage">Annuler</a>
 	</div>
 	
 </form>

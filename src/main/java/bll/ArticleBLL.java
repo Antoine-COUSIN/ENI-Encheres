@@ -1,12 +1,11 @@
 package bll;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import bo.Category;
+import bo.Item;
 import dal.ArticleDAO;
 import dal.DAOFactory;
-import dal.UserDAO;
 
 public class ArticleBLL {
 	
@@ -17,8 +16,11 @@ private ArticleDAO articleDAO;
 	}
 	
 	public List<Category> listCategories() {
-		List<Category> result = new ArrayList<>();
-		return result = articleDAO.listAllCategories();
+		return articleDAO.listAllCategories();
+	}
+	
+	public List<Item> listArticles() {
+		return articleDAO.listAllItems();
 	}
 	
 }

@@ -9,19 +9,20 @@
 				<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 					<c:choose>
 						<c:when test="${ isConnected }">
-							<li class="nav-item">
-								<a class="nav-link" aria-current="page" href="#">Ench�res</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="#">Vendre un article</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="#">Mon profil</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="#">D�connexion</a>
-							</li>
-						</c:when>
+						<li class="nav-item">
+				          <a class="nav-link" aria-current="page" href="liste_auctions">Enchères</a>
+				        </li>
+				        <li class="nav-item">
+				          <a class="nav-link" href="#">Vendre un article</a>
+				        </li>
+				        <li class="nav-item">
+				          <a class="nav-link" href="showProfile">Mon profil</a>
+				        </li>
+				        <li class="nav-item">
+				          <form method="POST" action="disconnect"><input type="submit" value="Deconnexion" /></form>
+				        </li>
+					</c:when>
+
 					
 						<c:when test="${ !isConnected }">
 							<li class="nav-item">

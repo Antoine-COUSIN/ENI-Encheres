@@ -48,7 +48,16 @@ public class UserBLL {
 		}
 	}
 	
+	public void updateUser(User user) throws UserBLLException {
+		UserBLLException e = new UserBLLException();
+		checkValues(user);
+		userDAO.updateUser(user);
+		
+	}
 	
+	public void deleteUser(int id) {
+		userDAO.deleteUser(id);
+	}
 	
 	
 	public void checkAuth(String login, String password) throws UserBLLException {
@@ -65,6 +74,8 @@ public class UserBLL {
 			throw e;
 		}
 	}
+	
+	
 	
 	public void checkValues(User user) throws UserBLLException {
 		UserBLLException e = new UserBLLException();

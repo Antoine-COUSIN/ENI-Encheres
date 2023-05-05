@@ -15,6 +15,10 @@ public class UserDAOJdbcImpl implements UserDAO {
 	private static final String CREATE_USER = "INSERT INTO UTILISATEURS VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	private static final String CHECK_EXISTING_EMAIL = "SELECT no_utilisateur from UTILISATEURS WHERE EMAIL = ?";
 	private static final String CHECK_EXISTING_PSEUDO = "SELECT no_utilisateur from UTILISATEURS WHERE PSEUDO = ?";
+	private static final String UPDATE_USER = "UPDATE UTILISATEURS SET pseudo = ?, nom = ?, prenom = ?, email = ?, telephone = ?, rue = ?, code_postal = ?, ville = ?, mot_de_passe = ?,"
+											+ " credit = ?, admin = ? WHERE no_utilisateur = ?";
+	private static final String DELETE_USER = "DELETE FROM UTILISATEURS WHERE no_utilisateur = ?";
+	
 	
 	@Override
 	public User login(String pseudoOrEmail, String password) {
@@ -139,6 +143,48 @@ public class UserDAOJdbcImpl implements UserDAO {
 			e.printStackTrace();
 		}
 		return result;
+	}
+
+	@Override
+	public void updateUser(User user) {
+		try (Connection cnx = ConnectionProvider.getConnection();) {
+			
+			PreparedStatement ps = cnx.prepareStatement(UPDATE_USER);
+			
+			ps.setString(1, user.getPseudo());
+			ps.setString(2, user.getLastName());
+			ps.setString(3, user.getFirstName());
+			ps.setString(4, user.getEmail());
+			ps.setString(5, user.getPhoneNumber());
+			ps.setString(6, user.getStreetAddress());
+			ps.setString(7, user.getPostalCodeAddress());
+			ps.setString(8,user.getCityAddress());
+			ps.setString(9, user.getPassword());
+			ps.setInt(10, user.getCredit());
+			ps.setBoolean(11, false);
+			
+			ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+	@Override
+	public void deleteUser(int id) {
+		try (Connection cnx = ConnectionProvider.getConnection();) {
+			
+			PreparedStatement ps = cnx.prepareStatement(DELETE_USER);
+			
+			ps.setInt(1, id);
+			
+			ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 }

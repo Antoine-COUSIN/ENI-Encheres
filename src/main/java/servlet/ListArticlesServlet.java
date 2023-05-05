@@ -7,17 +7,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class TesterConnexionServlet
- */
-@WebServlet("/TesterConnexionServlet")
-public class TesterConnexionServlet extends HttpServlet {
+
+@WebServlet("/liste_auctions")
+public class ListArticlesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getSession().getAttribute("loggedUser");
-		
-		request.getRequestDispatcher("WEB-INF/jsp/accueil.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/jsp/liste-encheres.jsp").forward(request, response);
 	}
+
 
 }

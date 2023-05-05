@@ -4,14 +4,14 @@
 
 
 <div>
-	<p>Pseudo : ${ loggedUser.pseudo }</p>
-	<p>Nom : ${ loggedUser.lastName }</p>
-	<p>Prénom : ${ loggedUser.firstName }</p>
-	<p>Email : ${ loggedUser.email }</p>
-	<p>Téléphone : ${ loggedUser.phoneNumber }</p>
-	<p>Rue : ${ loggedUser.streetAddress }</p>
-	<p>Code postal : ${ loggedUser.postalCodeAddress }</p>
-	<p>Ville : ${ loggedUser.cityAddress }</p>
+	<p>Pseudo : ${ user.pseudo }</p>
+	<p>Nom : ${ user.lastName }</p>
+	<p>Prénom : ${ user.firstName }</p>
+	<p>Email : ${ user.email }</p>
+	<p>Téléphone : ${ user.phoneNumber }</p>
+	<p>Rue : ${ user.streetAddress }</p>
+	<p>Code postal : ${ user.postalCodeAddress }</p>
+	<p>Ville : ${ user.cityAddress }</p>
 	
 	<a href="updateProfile" >Modifier</a>
 	

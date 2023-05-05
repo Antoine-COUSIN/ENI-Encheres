@@ -8,4 +8,6 @@ public interface UserDAO {
 	public boolean createUser(User user);
 	public boolean checkEmail(String email);
 	public boolean checkPseudo(String pseudo);
+	public void updateUser(User user);
+	public void deleteUser(int id);
 }

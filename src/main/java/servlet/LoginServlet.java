@@ -46,12 +46,12 @@ public class LoginServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		User loggedUser;
+		User user;
 		try {
-			loggedUser = userBLL.login(pLogin, pPassword);
-			if (loggedUser != null) {
+			user = userBLL.login(pLogin, pPassword);
+			if (user != null) {
 				System.out.println("connected with " + pLogin);
-				request.getSession().setAttribute("loggedUser", loggedUser);
+				request.getSession().setAttribute("user", user);
 				request.getSession().setAttribute("isConnected", true);
 				request.getRequestDispatcher("WEB-INF/jsp/liste-encheres.jsp").forward(request, response);
 			} else {

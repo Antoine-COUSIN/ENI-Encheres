@@ -31,6 +31,8 @@ public class LoginServlet extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
 		String pLogin = request.getParameter("login");
 		//String pPassword = request.getParameter("password");
 		String pPassword = null;
@@ -49,20 +51,20 @@ public class LoginServlet extends HttpServlet {
 			loggedUser = userBLL.login(pLogin, pPassword);
 			if (loggedUser != null) {
 				System.out.println("connected with " + pLogin);
-				request.setAttribute("loggedUser", loggedUser);
-				request.setAttribute("isConnected", true);
+				request.getSession().setAttribute("loggedUser", loggedUser);
+				request.getSession().setAttribute("isConnected", true);
 				request.getRequestDispatcher("WEB-INF/jsp/liste-encheres.jsp").forward(request, response);
 			} else {
 				System.out.println("user does not exist");
 				request.setAttribute("logError", true);
-				request.setAttribute("isConnected", false);
+				request.getSession().setAttribute("isConnected", false);
 				request.getRequestDispatcher("WEB-INF/jsp/login.jsp").forward(request, response);
 			}
 			
 		} catch (UserBLLException e) {
 			System.out.println("user does not exist");
 			request.setAttribute("errors", e.getErrors());
-			request.setAttribute("isConnected", false);
+			request.getSession().setAttribute("isConnected", false);
 			request.getRequestDispatcher("WEB-INF/jsp/login.jsp").forward(request, response);
 		}
 		

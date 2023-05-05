@@ -25,7 +25,7 @@ public class CreateUserServlet extends HttpServlet {
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getAttribute("partialLoggedUser");
+		request.getSession().getAttribute("partialLoggedUser");
 		
 		request.getRequestDispatcher("WEB-INF/jsp/create-user.jsp").forward(request, response);
 	}
@@ -59,19 +59,19 @@ public class CreateUserServlet extends HttpServlet {
 			try {
 				user.setPassword(pPassword);
 				userBLL.createUser(user);
-				request.setAttribute("user", user);
-				request.setAttribute("isConnected", true);
+				request.getSession().setAttribute("user", user);
+				request.getSession().setAttribute("isConnected", true);
 				request.getRequestDispatcher("WEB-INF/jsp/liste-encheres.jsp").forward(request, response);
 			} catch (UserBLLException e) {
 				request.setAttribute("errors", e.getErrors());
-				request.setAttribute("isConnected", false);
+				request.getSession().setAttribute("isConnected", false);
 				request.getRequestDispatcher("WEB-INF/jsp/create-user.jsp").forward(request, response);
 			}
 			
 		} else {
 			//alert different password
 			request.setAttribute("logError", true);
-			request.setAttribute("isConnected", false);
+			request.getSession().setAttribute("isConnected", false);
 			request.getRequestDispatcher("WEB-INF/jsp/create-user.jsp").forward(request, response);
 		}
 		

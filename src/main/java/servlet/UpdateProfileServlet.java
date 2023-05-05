@@ -34,6 +34,7 @@ public class UpdateProfileServlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		User userSession = (User) request.getSession().getAttribute("user");
 		
 		User user = new User();
@@ -83,9 +84,5 @@ public class UpdateProfileServlet extends HttpServlet {
 			request.setAttribute("previousPage", "update-profile");
 			request.getRequestDispatcher("WEB-INF/jsp/create-user.jsp").forward(request, response);
 		}
-		
 	}
-	
-	
-
 }

@@ -6,50 +6,49 @@
 		<c:forEach var="code" items="${ errors }">
 			<c:choose>
 				<c:when test="${code == 1 }">
-					<li>Le pseudo ou l'addresse mail est mal renseignï¿½</li>
+					<li>Le pseudo ou l'addresse mail est mal renseigné</li>
 				</c:when>
 				<c:when test="${code == 101}">
-					<li>Le pseudo est mal renseignï¿½</li>
+					<li>Le pseudo est mal renseigné</li>
 				</c:when>
 				<c:when test="${code == 102}">
-					<li>Attention, seul les caractï¿½res alphanumeric sont autorisï¿½s (a-z/A-Z/1-9)</li>
+					<li>Attention, seul les caractères alphanumeric sont autorisés (a-z/A-Z/1-9)</li>
 				</c:when>
 				<c:when test="${code == 2 }">
-					<li>Le mot de passe est mal renseignï¿½</li>
+					<li>Le mot de passe est mal renseigné</li>
 				</c:when>
 				<c:when test="${code == 3 }">
-					<li>Le prï¿½nom est mal renseignï¿½</li>
+					<li>Le prénom est mal renseigné</li>
 				</c:when>
 				<c:when test="${code == 4 }">
-					<li>Le numï¿½ro de tï¿½lï¿½phone est mal renseignï¿½</li>
+					<li>Le numéro de téléphone est mal renseigné</li>
 				</c:when>
 				<c:when test="${code == 5 }">
-					<li>Le code postal est mal renseignï¿½</li>
+					<li>Le code postal est mal renseigné</li>
 				</c:when>
 				<c:when test="${code == 6 }">
-					<li>Le nom de famille est mal renseignï¿½</li>
+					<li>Le nom de famille est mal renseigné</li>
 				</c:when>
 				<c:when test="${code == 7 }">
-					<li>L'email est mal renseignï¿½</li>
+					<li>L'email est mal renseigné</li>
 				</c:when>
 				<c:when test="${code == 8 }">
-					<li>L'addresse est mal renseignï¿½e</li>
+					<li>L'addresse est mal renseigné</li>
 				</c:when>
 				<c:when test="${code == 9}">
-					<li>La ville est mal renseignï¿½e</li>
+					<li>La ville est mal renseignée</li>
 				</c:when>
-				
 				<c:when test="${code == 10 }">
-					<li>Un utilisateur avec ce pseudo existe dï¿½jï¿½</li>
+					<li>Un utilisateur avec ce pseudo existe déjà</li>
 				</c:when>
 				<c:when test="${code == 11 }">
-					<li>Un utilisateur avec cet email existe dï¿½jï¿½</li>
+					<li>Un utilisateur avec cet email existe déjà</li>
 				</c:when>
 				<c:when test="${code == 15 }">
 					<li>Les deux mot de passe ne correspondent pas, veuillez recommencer</li>
 				</c:when>
 				<c:when test="${code == 20 }">
-					<li>Erreur lors de la crï¿½ation, veuillez rï¿½essayer</li>
+					<li>Erreur lors de la création, veuillez réessayer</li>
 				</c:when>
 			</c:choose>
 		</c:forEach>

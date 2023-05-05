@@ -1,23 +1,20 @@
-<form>
-	<p>Filtres : </p>
-	
-	<div>
-		<input type="text" placeholder="Le nom de l'article contient"/>	
+	<form>
+		<p>Filtres : </p>
 		
-		<label for="selected-category">Catï¿½gorie : </label>
-		<select name="category">
-			<option value="">Toutes</option>
+		<div>
+			<input type="text" placeholder="Le nom de l'article contient"/>	
 			
-			<c:forEach var="cat" items="${categories}">
-				<option value="${cat }">${cat.getLibelle() }</option>
-			</c:forEach>
-			
-		</select>
-	</div>
-	
-	<div>
-		<input type="submit" value="Rechercher"/> 
-	</div>
-	
-
-</form>
+			<label for="selected-category">Catégories : </label>
+			<select name="category">
+				<option value="">Toutes</option>
+				
+				<c:forEach var="cat" items="${categories}">
+					<option value="${cat }">${cat.getLibelle() }</option>
+				</c:forEach>
+			</select>
+		</div>
+		
+		<div>
+			<input type="submit" value="Rechercher"/> 
+		</div>
+	</form>

@@ -14,12 +14,16 @@
 			
 			<p>${article.getName_article() }</p>
 			<p>Prix : ${article.getSell_price() } points</p>
-			<p>Fin de l'enchère : ${article.getEnd_auction() }</p>
+			
+			<fmt:parseDate value="${article.end_auction}" pattern="yyyy-MM-dd'T'HH:mm" var="end_auction"/>
+			<fmt:formatDate value="${end_auction}" pattern="dd-MM-yyyy HH:mm" var="end_auction" />
+			<p><b>Fin de l'enchère : </b>${end_auction}</p>
+			
 			<p>Vendeur : ${article.getUser().getPseudo() }</p>
 		</div>
 	</c:forEach>
 
 </div>
-		
+
 		
 <%@include file="../fragments/footer.jspf" %>

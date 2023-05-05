@@ -1,14 +1,14 @@
 package bo;
 
-import java.time.Instant;
+import java.time.LocalDateTime;
 
 public class Item {
 	
 	private int no_article;
 	private String name_article;
 	private String descr_article;
-	private Instant start_auction;
-	private Instant end_auction;
+	private LocalDateTime start_auction;
+	private LocalDateTime end_auction;
 	private int initial_price;
 	private int sell_price;
 	
@@ -22,8 +22,8 @@ public class Item {
 		
 	}
 
-	public Item(int no_article, String name_article, String descr_article, Instant start_auction,
-			Instant end_auction, int initial_price, int sell_price, User user, Category category, String sell_status,
+	public Item(int no_article, String name_article, String descr_article, LocalDateTime start_auction,
+			LocalDateTime end_auction, int initial_price, int sell_price, User user, Category category, String sell_status,
 			String image_article) {
 		this.no_article = no_article;
 		this.name_article = name_article;
@@ -62,19 +62,19 @@ public class Item {
 		this.descr_article = descr_article;
 	}
 
-	public Instant getStart_auction() {
+	public LocalDateTime getStart_auction() {
 		return start_auction;
 	}
 
-	public void setStart_auction(Instant start_auction) {
+	public void setStart_auction(LocalDateTime start_auction) {
 		this.start_auction = start_auction;
 	}
 
-	public Instant getEnd_auction() {
+	public LocalDateTime getEnd_auction() {
 		return end_auction;
 	}
 
-	public void setEnd_auction(Instant end_auction) {
+	public void setEnd_auction(LocalDateTime end_auction) {
 		this.end_auction = end_auction;
 	}
 

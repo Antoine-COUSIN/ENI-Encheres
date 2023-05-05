@@ -5,7 +5,7 @@
 <%@include file="../fragments/errors.jspf" %>
 
 <c:if test="${ logError }">
-	<h3>Erreur de connexion, veuillez vérifier votre mot de passe ou votre identifiant</h2>
+	<h2>Erreur de connexion, veuillez vï¿½rifier votre mot de passe ou votre identifiant</h2>
 </c:if>
 
 <div class="login-container">
@@ -26,12 +26,12 @@
 				<label for="rememberLog">Se souvenir de moi</label>
 				<input type="checkbox" id="rememberLog" name="rememberLog" />
 				
-				<a href="#">Mot de passe oublié</a>
+				<a href="#">Mot de passe oubliÃ©</a>
 			</div>
 		</div>
   	</form>
   	
-  	<a href="createUser">Créer un compte</a>
+  	<a href="createUser">CrÃ©er un compte</a>
 </div>
 
 

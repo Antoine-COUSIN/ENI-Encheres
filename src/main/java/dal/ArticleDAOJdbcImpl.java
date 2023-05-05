@@ -66,15 +66,11 @@ public class ArticleDAOJdbcImpl implements ArticleDAO{
 				newItem.setName_article(rs.getString("nom_article"));
 				newItem.setDescr_article(rs.getString("description"));
 				
-				LocalDateTime localDateTime = rs.getDate("date_debut_enchere").toLocalDate().atStartOfDay();
-				ZonedDateTime zonedDateTime = localDateTime.atZone(ZoneId.systemDefault());
-				Instant instant = zonedDateTime.toInstant();
-				newItem.setStart_auction(instant);
+				LocalDateTime localDateTime = rs.getTimestamp("date_debut_enchere").toLocalDateTime();
+				newItem.setStart_auction(localDateTime);
 				
-				LocalDateTime localDateTime2 = rs.getDate("date_fin_enchere").toLocalDate().atStartOfDay();
-				ZonedDateTime zonedDateTime2 = localDateTime2.atZone(ZoneId.systemDefault());
-				Instant instant2 = zonedDateTime2.toInstant();
-				newItem.setStart_auction(instant2);
+				LocalDateTime localDateTime2 = rs.getTimestamp("date_fin_enchere").toLocalDateTime();
+				newItem.setEnd_auction(localDateTime2);
 				
 				newItem.setInitial_price(rs.getInt("prix_initial"));
 				newItem.setSell_price(rs.getInt("prix_vente"));

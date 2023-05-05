@@ -16,7 +16,7 @@ public class UserDAOJdbcImpl implements UserDAO {
 	private static final String CHECK_EXISTING_EMAIL = "SELECT no_utilisateur from UTILISATEURS WHERE EMAIL = ?";
 	private static final String CHECK_EXISTING_PSEUDO = "SELECT no_utilisateur from UTILISATEURS WHERE PSEUDO = ?";
 	private static final String UPDATE_USER = "UPDATE UTILISATEURS SET pseudo = ?, nom = ?, prenom = ?, email = ?, telephone = ?, rue = ?, code_postal = ?, ville = ?, mot_de_passe = ?,"
-											+ " credit = ?, admin = ? WHERE no_utilisateur = ?";
+											+ " credit = ?, administrateur = ? WHERE no_utilisateur = ?";
 	private static final String DELETE_USER = "DELETE FROM UTILISATEURS WHERE no_utilisateur = ?";
 	
 	
@@ -45,13 +45,7 @@ public class UserDAOJdbcImpl implements UserDAO {
 				loggedUser.setStreetAddress(rs.getString("rue"));
 				loggedUser.setPostalCodeAddress(rs.getString("code_postal"));
 				loggedUser.setCityAddress(rs.getString("ville"));
-				
-				try {
-					loggedUser.setPassword(PasswordUtil.hashPassword(rs.getString("mot_de_passe")));
-				} catch (NoSuchAlgorithmException e) {
-					
-					e.printStackTrace();
-				}
+				loggedUser.setPassword(rs.getString("mot_de_passe"));
 				
 				loggedUser.setCredit(rs.getInt("credit"));
 				loggedUser.setAdmin(rs.getBoolean("administrateur"));
@@ -86,6 +80,7 @@ public class UserDAOJdbcImpl implements UserDAO {
 			ps.setString(9, user.getPassword());
 			ps.setInt(10, user.getCredit());
 			ps.setBoolean(11, false);
+			
 			
 			ps.executeUpdate();
 			
@@ -162,6 +157,7 @@ public class UserDAOJdbcImpl implements UserDAO {
 			ps.setString(9, user.getPassword());
 			ps.setInt(10, user.getCredit());
 			ps.setBoolean(11, false);
+			ps.setInt(12, user.getNo_user());
 			
 			ps.executeUpdate();
 			

@@ -34,6 +34,8 @@ public class UpdateProfileServlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		User userSession = (User) request.getSession().getAttribute("user");
+		
 		User user = new User();
 		try {
 			user = C_CheckEveryField.gf_CheckEveryField(request);
@@ -55,11 +57,18 @@ public class UpdateProfileServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+		String pNewPassWord = null;
+		try {
+			pNewPassWord = PasswordUtil.hashPassword(request.getParameter("newPassword"));
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
 		
-		if (pPassword.equals(pConfirmPass)) {
+		if (pPassword.equals(pConfirmPass) && (!pPassword.equals(pNewPassWord))) {
 			//create-user
 			try {
-				user.setPassword(pPassword);
+				user.setNo_user(userSession.getNo_user());
+				user.setPassword(pConfirmPass);
 				userBLL.updateUser(user);
 				request.getSession().setAttribute("user", user);
 				request.getRequestDispatcher("WEB-INF/jsp/show-profile.jsp").forward(request, response);

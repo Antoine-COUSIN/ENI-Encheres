@@ -68,6 +68,7 @@ public class CreateUserServlet extends HttpServlet {
 			} catch (UserBLLException e) {
 				request.setAttribute("errors", e.getErrors());
 				request.getSession().setAttribute("isConnected", false);
+				request.setAttribute("previousPage", "create-user");
 				request.getRequestDispatcher("WEB-INF/jsp/create-user.jsp").forward(request, response);
 			}
 			
@@ -75,6 +76,7 @@ public class CreateUserServlet extends HttpServlet {
 			//alert different password
 			request.setAttribute("logError", true);
 			request.getSession().setAttribute("isConnected", false);
+			request.setAttribute("previousPage", "create-user");
 			request.getRequestDispatcher("WEB-INF/jsp/create-user.jsp").forward(request, response);
 		}
 		

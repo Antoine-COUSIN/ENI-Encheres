@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<body>
 	<%@include file="../fragments/header.jspf" %>
 	
 	<h1>Liste des enchères</h1>

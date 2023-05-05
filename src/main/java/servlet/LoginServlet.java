@@ -26,6 +26,7 @@ public class LoginServlet extends HttpServlet {
 	
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.getAttribute("previousPage");
 		request.getRequestDispatcher("WEB-INF/jsp/login.jsp").forward(request, response);
 	}
 
@@ -58,6 +59,7 @@ public class LoginServlet extends HttpServlet {
 				System.out.println("user does not exist");
 				request.setAttribute("logError", true);
 				request.getSession().setAttribute("isConnected", false);
+				request.setAttribute("previousPage", "create-user");
 				request.getRequestDispatcher("WEB-INF/jsp/login.jsp").forward(request, response);
 			}
 			
@@ -65,6 +67,7 @@ public class LoginServlet extends HttpServlet {
 			System.out.println("user does not exist");
 			request.setAttribute("errors", e.getErrors());
 			request.getSession().setAttribute("isConnected", false);
+			request.setAttribute("previousPage", "create-user");
 			request.getRequestDispatcher("WEB-INF/jsp/login.jsp").forward(request, response);
 		}
 		

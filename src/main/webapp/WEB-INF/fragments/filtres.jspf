@@ -4,7 +4,7 @@
 		<div>
 			<input type="text" placeholder="Le nom de l'article contient"/>	
 			
-			<label for="selected-category">Catégories : </label>
+			<label for="selected-category">CatÃ©gories : </label>
 			<select name="category">
 				<option value="">Toutes</option>
 				

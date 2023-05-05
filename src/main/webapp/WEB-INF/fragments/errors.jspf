@@ -6,49 +6,49 @@
 		<c:forEach var="code" items="${ errors }">
 			<c:choose>
 				<c:when test="${code == 1 }">
-					<li>Le pseudo ou l'addresse mail est mal renseigné</li>
+					<li>Le pseudo ou l'addresse mail est mal renseignÃ©</li>
 				</c:when>
 				<c:when test="${code == 101}">
-					<li>Le pseudo est mal renseigné</li>
+					<li>Le pseudo est mal renseignï¿½</li>
 				</c:when>
 				<c:when test="${code == 102}">
-					<li>Attention, seul les caractères alphanumeric sont autorisés (a-z/A-Z/1-9)</li>
+					<li>Attention, seuls les caractÃ¨res alphanumeric sont autorisÃ©s</li>
 				</c:when>
 				<c:when test="${code == 2 }">
-					<li>Le mot de passe est mal renseigné</li>
+					<li>Le mot de passe est mal renseignÃ©</li>
 				</c:when>
 				<c:when test="${code == 3 }">
-					<li>Le prénom est mal renseigné</li>
+					<li>Le prÃ©nom est mal renseignÃ©</li>
 				</c:when>
 				<c:when test="${code == 4 }">
-					<li>Le numéro de téléphone est mal renseigné</li>
+					<li>Le numÃ©ro de tÃ©lÃ©phone est mal renseignÃ©</li>
 				</c:when>
 				<c:when test="${code == 5 }">
-					<li>Le code postal est mal renseigné</li>
+					<li>Le code postal est mal renseignÃ©</li>
 				</c:when>
 				<c:when test="${code == 6 }">
-					<li>Le nom de famille est mal renseigné</li>
+					<li>Le nom de famille est mal renseignÃ©</li>
 				</c:when>
 				<c:when test="${code == 7 }">
-					<li>L'email est mal renseigné</li>
+					<li>L'email est mal renseignÃ©</li>
 				</c:when>
 				<c:when test="${code == 8 }">
-					<li>L'addresse est mal renseigné</li>
+					<li>L'addresse est mal renseignÃ©e</li>
 				</c:when>
 				<c:when test="${code == 9}">
-					<li>La ville est mal renseignée</li>
+					<li>La ville est mal renseignÃ©e</li>
 				</c:when>
 				<c:when test="${code == 10 }">
-					<li>Un utilisateur avec ce pseudo existe déjà</li>
+					<li>Un utilisateur avec ce pseudo existe dÃ©jÃ </li>
 				</c:when>
 				<c:when test="${code == 11 }">
-					<li>Un utilisateur avec cet email existe déjà</li>
+					<li>Un utilisateur avec cet email existe dÃ©jÃ </li>
 				</c:when>
 				<c:when test="${code == 15 }">
 					<li>Les deux mot de passe ne correspondent pas, veuillez recommencer</li>
 				</c:when>
 				<c:when test="${code == 20 }">
-					<li>Erreur lors de la création, veuillez réessayer</li>
+					<li>Erreur lors de la crÃ©ation, veuillez rÃ©essayer</li>
 				</c:when>
 			</c:choose>
 		</c:forEach>

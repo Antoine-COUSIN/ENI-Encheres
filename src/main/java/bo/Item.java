@@ -12,9 +12,10 @@ public class Item {
 	private int initial_price;
 	private int sell_price;
 	
-	private User user;
-	private Category category;
-	
+	private int no_user;
+	private String user_Pseudo;
+	private int no_category;
+	private String category_Lib;
 	private String sell_status;
 	private String image_article;
 	
@@ -23,7 +24,7 @@ public class Item {
 	}
 
 	public Item(int no_article, String name_article, String descr_article, LocalDateTime start_auction,
-			LocalDateTime end_auction, int initial_price, int sell_price, User user, Category category, String sell_status,
+			LocalDateTime end_auction, int initial_price, int sell_price, int no_user, int no_category, String sell_status,
 			String image_article) {
 		this.no_article = no_article;
 		this.name_article = name_article;
@@ -32,8 +33,8 @@ public class Item {
 		this.end_auction = end_auction;
 		this.initial_price = initial_price;
 		this.sell_price = sell_price;
-		this.user = user;
-		this.category = category;
+		this.no_user = no_user;
+		this.no_category = no_category;
 		this.sell_status = sell_status;
 		this.image_article = image_article;
 	}
@@ -94,20 +95,36 @@ public class Item {
 		this.sell_price = sell_price;
 	}
 
-	public User getUser() {
-		return user;
+	public int getNo_user() {
+		return no_user;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setNo_user(int no_user) {
+		this.no_user = no_user;
+	}
+	
+	public String getUser_Pseudo() {
+		return user_Pseudo;
 	}
 
-	public Category getCategory() {
-		return category;
+	public void setUser_Pseudo(String user_Pseudo) {
+		this.user_Pseudo = user_Pseudo;
 	}
 
-	public void setCategory(Category category) {
-		this.category = category;
+	public int getNo_category() {
+		return no_category;
+	}
+	
+	public void setNo_category(int no_category) {
+		this.no_category = no_category;
+	}
+	
+	public String getCategory_Lib() {
+		return category_Lib;
+	}
+
+	public void setCategory_Lib(String category_Lib) {
+		this.category_Lib = category_Lib;
 	}
 
 	public String getSell_status() {
@@ -125,5 +142,6 @@ public class Item {
 	public void setImage_article(String image_article) {
 		this.image_article = image_article;
 	}
+	
 	
 }

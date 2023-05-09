@@ -4,6 +4,7 @@ import java.util.List;
 
 import bo.Category;
 import bo.Item;
+import bo.PickupPoint;
 import dal.ArticleDAO;
 import dal.DAOFactory;
 
@@ -21,6 +22,10 @@ private ArticleDAO articleDAO;
 	
 	public List<Item> listArticles() {
 		return articleDAO.listAllItems();
+	}
+	
+	public void createItem(Item item, PickupPoint pickupPoint) {
+		articleDAO.insertItem(item, pickupPoint);
 	}
 	
 }

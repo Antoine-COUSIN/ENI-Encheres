@@ -30,6 +30,7 @@ public class UpdateProfileServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setAttribute("previousPage", "update-user");
 		request.getRequestDispatcher("WEB-INF/jsp/create-user.jsp").forward(request, response);
+		
 	}
 
 

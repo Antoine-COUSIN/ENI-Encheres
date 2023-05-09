@@ -95,8 +95,10 @@ public class CreateAuctionServlet extends HttpServlet {
 			
 			articleBLL.createItem(newItem, newPU);
 			
-		} else if ("delete".equals(action)) {
+			request.getRequestDispatcher("WEB-INF/jsp/liste-encheres.jsp").forward(request, response);
 			
+		} else if ("cancel".equals(action)) {
+			request.getRequestDispatcher("WEB-INF/jsp/liste-encheres.jsp").forward(request, response);
 		}
 
 		

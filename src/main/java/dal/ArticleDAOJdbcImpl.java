@@ -21,8 +21,8 @@ public class ArticleDAOJdbcImpl implements ArticleDAO{
 													  "etat_vente, image FROM ARTICLES_VENDUS A " + 
 													  "JOIN CATEGORIES ON CATEGORIES.no_categorie = A.no_categorie " + 
 													  "JOIN UTILISATEURS ON UTILISATEURS.no_utilisateur = A.no_utilisateur ";
-	private static final String INSERT_ARTICLE = "INSERT INTO ARTICLES_VENDUS";
-	private static final String CREATE_PICKUP_POINT = "INSERT INTO RETRAIT VALUES (?, ?, ?, ?)";
+	private static final String INSERT_ARTICLE = "INSERT INTO ARTICLES_VENDUS VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	private static final String CREATE_PICKUP_POINT = "INSERT INTO RETRAITS VALUES (?, ?, ?, ?)";
 	
 	@Override
 	public List<Category> listAllCategories() {
@@ -108,11 +108,16 @@ public class ArticleDAOJdbcImpl implements ArticleDAO{
 			ps.executeUpdate();
 			
 			ResultSet rs = ps.getGeneratedKeys();
+			rs.next();
 			PreparedStatement ps2_pickUp = cnx.prepareStatement(CREATE_PICKUP_POINT);
-			ps2_pickUp.setInt(1, rs.getInt(1));
+			int id = rs.getInt(1);
+			pickupPoint.setNo_item(id);
+			ps2_pickUp.setInt(1, pickupPoint.getNo_item());
 			ps2_pickUp.setString(2, pickupPoint.getStreetAddress());
 			ps2_pickUp.setString(3, pickupPoint.getPostalCode());
 			ps2_pickUp.setString(4, pickupPoint.getCityAddress());
+			
+			ps2_pickUp.executeUpdate();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

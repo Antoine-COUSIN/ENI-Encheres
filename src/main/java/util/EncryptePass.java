@@ -7,7 +7,7 @@ public class EncryptePass {
 	public static void main(String[] args) {
 		
 		
-		String pass = "root";
+		String pass = "password";
 		
 		try {
 			pass = PasswordUtil.hashPassword(pass);

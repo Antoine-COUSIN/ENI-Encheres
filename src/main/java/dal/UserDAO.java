@@ -9,5 +9,5 @@ public interface UserDAO {
 	public boolean checkEmail(String email);
 	public boolean checkPseudo(String pseudo);
 	public void updateUser(User user);
-	public void deleteUser(int id);
+	public void deleteUser(int no_user);
 }

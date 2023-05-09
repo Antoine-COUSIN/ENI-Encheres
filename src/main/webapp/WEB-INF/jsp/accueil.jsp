@@ -19,7 +19,7 @@
 				<fmt:formatDate value="${end_auction}" pattern="dd-MM-yyyy HH:mm" var="end_auction" />
 				<p><b>Fin de l'enchère : </b>${end_auction}</p>
 				
-				<p>Vendeur : ${article.getUser().getPseudo() }</p>
+				<p>Vendeur : ${article.user_Pseudo }</p>
 			</div>
 		</c:forEach>
 	

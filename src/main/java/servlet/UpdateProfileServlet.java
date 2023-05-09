@@ -34,6 +34,29 @@ public class UpdateProfileServlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String action = request.getParameter("action");
+		
+		if ("save".equals(action)) {
+			_updateProfile(request, response);
+		} else if ("delete".equals(action)) {
+			_deleteProfile(request, response);
+		}
+		
+		
+	}
+
+	private void _deleteProfile(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		User userSession = (User) request.getSession().getAttribute("user");
+		int no_user = userSession.getNo_user();
+		
+		if (no_user != 0) {
+			userBLL.deleteUser(no_user);
+			request.getRequestDispatcher("WEB-INF/jsp/accueil.jsp").forward(request, response);
+		}
+		
+	}
+
+	private void _updateProfile(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		User userSession = (User) request.getSession().getAttribute("user");
 		

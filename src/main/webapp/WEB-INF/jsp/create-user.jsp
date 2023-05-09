@@ -82,8 +82,8 @@
 				
 				<c:when test="${ previousPage == 'update-user' }">
 					<div>
-						<input type="submit" value="Enregistrer"/>
-						<input type="submit" value="Supprimer mon compte"/>
+						<button type="submit" value="save" name="action" >Enregistrer</button>
+						<button type="submit" value="delete" name="action" >Supprimer mon compte</button>
 					</div>
 				</c:when>
 				

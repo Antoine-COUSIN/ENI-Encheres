@@ -49,7 +49,6 @@ public class UserBLL {
 	}
 	
 	public void updateUser(User user) throws UserBLLException {
-		UserBLLException e = new UserBLLException();
 		checkValues(user);
 		userDAO.updateUser(user);
 		

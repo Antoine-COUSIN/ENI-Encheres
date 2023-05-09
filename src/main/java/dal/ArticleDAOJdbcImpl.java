@@ -91,6 +91,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO{
 	public void insertItem(Item item, PickupPoint pickupPoint) {
 		try (Connection cnx = ConnectionProvider.getConnection();) {
 			
+			
 			PreparedStatement ps = cnx.prepareStatement(INSERT_ARTICLE, PreparedStatement.RETURN_GENERATED_KEYS);
 			
 			ps.setString(1, item.getName_article());

@@ -13,7 +13,14 @@
 	<div>
 		<c:forEach var="article" items="${ articles }">
 			<div>
-				<img alt="article-pic" src="${ article.getImage_article() }">
+				<c:choose>
+					<c:when test="${!empty article.image_article }">
+						<img alt="article-pic" src="${pageContext.request.contextPath}/uploads/${ article.image_article }">
+					</c:when>
+					<c:otherwise>
+						<img alt="default-picture" src="${pageContext.request.contextPath}/assets/default-picture.png">
+					</c:otherwise>
+				</c:choose>
 				
 				<p>${article.getName_article() }</p>
 				<p>Prix : ${article.getSell_price() } points</p>

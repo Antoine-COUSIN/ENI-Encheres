@@ -65,7 +65,7 @@ public class UpdateProfileServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		if (pPassword.equals(pConfirmPass) && (!pPassword.equals(pNewPassWord))) {
+		if (pNewPassWord.equals(pConfirmPass) && (!pPassword.equals(pNewPassWord))) {
 			//create-user
 			try {
 				user.setNo_user(userSession.getNo_user());

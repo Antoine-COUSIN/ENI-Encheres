@@ -25,11 +25,14 @@ public class HomePageServlet extends HttpServlet {
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Category> categories = articleBLL.listCategories();
-		List<Item> articles = articleBLL.listArticles();
+		if (request.getSession().getAttribute("articles") == null) {
+			List<Item> articles = articleBLL.listArticles();
+			request.getSession().setAttribute("articles", articles);
+		}
 		
+		List<Category> categories = articleBLL.listCategories();
 		request.getSession().setAttribute("categories", categories);
-		request.getSession().setAttribute("articles", articles);
+		
 		
 		request.getRequestDispatcher("WEB-INF/jsp/accueil.jsp").forward(request, response);
 	}

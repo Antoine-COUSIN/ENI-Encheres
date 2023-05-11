@@ -28,4 +28,12 @@ private ArticleDAO articleDAO;
 		articleDAO.insertItem(item, pickupPoint);
 	}
 	
+	public List<Item> filteredSearch(int no_category, String name) {
+		return articleDAO.filteredSearch(no_category, name);
+	}
+	
+	public List<Item> completeFilteredSearchPurchases(int no_category, String name, String sell_status ,int no_user) {
+		return articleDAO.completeFilteredSearchPurchases(no_category, name, sell_status, no_user);
+	}
+	
 }

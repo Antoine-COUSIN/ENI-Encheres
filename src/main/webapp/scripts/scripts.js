@@ -23,7 +23,6 @@ const salesCheckboxes = salesDiv.querySelectorAll('input[type="checkbox"]');
 const openAuctionCheckbox = document.getElementById("open_auction");
 const myAuctionsWonCheckbox = document.getElementById("my_auctions_won");
 
-purchasesRadio.checked = true;
 
 purchasesRadio.addEventListener('change', () => {
   if (purchasesRadio.checked) {
@@ -67,6 +66,7 @@ myAuctionsWonCheckbox.addEventListener('change', () => {
 		openAuctionCheckbox.checked = false
 	}
 })
+
 
 
 

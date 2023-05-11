@@ -2,3 +2,11 @@
 	opacity: 0.5;
 	pointer-events: none;
 }
+
+.div-item {
+	border: 1px solid black;
+}
+
+.div-item:hover {
+	cursor: pointer;
+}

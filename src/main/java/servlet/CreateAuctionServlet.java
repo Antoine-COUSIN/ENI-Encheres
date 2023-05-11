@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import bll.ArticleBLL;
+import bll.ArticleBLLException;
 import bo.Category;
 import bo.Item;
 import bo.PickupPoint;
@@ -93,9 +94,15 @@ public class CreateAuctionServlet extends HttpServlet {
 			newPU.setPostalCode(pPostalCodeAddress);
 			newPU.setStreetAddress(pStreetAddress);
 			
-			articleBLL.createItem(newItem, newPU);
+			try {
+				articleBLL.createItem(newItem, newPU);
+				request.getRequestDispatcher("WEB-INF/jsp/liste-encheres.jsp").forward(request, response);
+			} catch (ArticleBLLException e) {
+				request.setAttribute("createArticleError", e.getErrors());
+				request.getRequestDispatcher("WEB-INF/jsp/create-auction.jsp").forward(request, response);
+			}
 			
-			request.getRequestDispatcher("WEB-INF/jsp/liste-encheres.jsp").forward(request, response);
+			
 			
 		} else if ("cancel".equals(action)) {
 			request.getRequestDispatcher("WEB-INF/jsp/liste-encheres.jsp").forward(request, response);

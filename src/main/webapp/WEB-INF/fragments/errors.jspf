@@ -52,6 +52,43 @@
 				<c:when test="${code == 20 }">
 					<li>Erreur lors de la création, veuillez réessayer</li>
 				</c:when>
+				<c:when test="${ code == 21 }">
+					<li>Erreur : le montant de la mise doit être supérieur à 0</li>
+				</c:when>
+			</c:choose>
+		</c:forEach>
+	</ul>
+</c:if>
+
+<c:if test="${!empty bidErrors }">
+	<h3>Erreur lors de la création de la mise : </h3>
+	<ul>
+		<c:forEach var="code" items="${ bidErrors }">
+			<c:choose>
+				<c:when test="${ code == 1 }">
+					<li>Vous n'avez pas assez de crédit !</li>
+				</c:when>
+				<c:when test="${ code == 2 }">
+					<li>Attention, le montant de la mise doit être supérieur à 0 !</li>
+				</c:when>
+				<c:when test="${ code == 3 }">
+					<li>Attention, le montant de la mise n'est pas assez haut, une enchère plus élevée existe déjà pour cet article</li>
+				</c:when>
+			</c:choose>
+		</c:forEach>
+	</ul>
+</c:if>
+
+
+<c:if test="${!empty createArticleError }">
+	<h3>Erreur lors de la création de l'enchère : </h3>
+	<ul>
+		<c:forEach var="code" items="${ createArticleError }">
+			<c:choose>
+				<c:when test="${ code == 1 }">
+					<li>La descritpion est trop longue (max 300 caractères)</li>
+				</c:when>
+				
 			</c:choose>
 		</c:forEach>
 	</ul>

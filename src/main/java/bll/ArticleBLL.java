@@ -24,9 +24,11 @@ private ArticleDAO articleDAO;
 		return articleDAO.listAllItems();
 	}
 	
-	public void createItem(Item item, PickupPoint pickupPoint) {
+	public void createItem(Item item, PickupPoint pickupPoint) throws ArticleBLLException {
+		checkValues(item, pickupPoint);
 		articleDAO.insertItem(item, pickupPoint);
 	}
+	
 	
 	public List<Item> filteredSearch(int no_category, String name) {
 		return articleDAO.filteredSearch(no_category, name);
@@ -42,6 +44,18 @@ private ArticleDAO articleDAO;
 
 	public PickupPoint getSelectedItemPickupPoint(int no_article) {
 		return articleDAO.getSelectedItemPickupPoint(no_article);
+	}
+	
+	private void checkValues(Item item, PickupPoint pickupPoint) throws ArticleBLLException {
+		ArticleBLLException e = new ArticleBLLException();
+		
+		if (item.getDescr_article().length() > 300) {
+			e.addError(1);
+		}
+		
+		if (e.getErrors().size() > 0) {
+			throw e;
+		}
 	}
 	
 }

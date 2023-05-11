@@ -2,6 +2,13 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 
+<%@include file="../fragments/head.jspf" %> 
+	
+<head>
+	<title>Accueil</title>
+</head>
+
+<body>
 	<%@include file="../fragments/header.jspf" %>
 	
 	<div>
@@ -19,3 +26,4 @@
 	</div>
 		
 	<%@include file="../fragments/footer.jspf" %>
+</body>

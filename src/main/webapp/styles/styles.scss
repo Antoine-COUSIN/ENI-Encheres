@@ -28,12 +28,7 @@ body{
 
 /******************************************/
 /* HEADER */
-header{
-	// background-image: url(../img/header-background.jpg);
-    // background-position: center;
-    // background-size: cover;
-    // height: 75vh;
-    
+header{    
     .header-nav {
 		display: flex;
 		flex-direction: row;
@@ -187,3 +182,123 @@ header{
 	}
 	
 }
+
+/******************************************************/
+/* FILTRE ENCHERES */
+.auction-filter{
+	margin: 25px;
+	
+	.search-button-box{
+		width: 100%;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		
+		button{
+			width: 300px;
+			height: 100px;
+		}
+	}
+	
+	.no-article{
+		width: 100%;
+		margin: 25px 0px;
+		text-align: center;
+	}
+}
+
+/******************************************************/
+/* HOME SECTION */
+.home{
+	h2{
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+		
+	h2::after{
+		display: block;
+		height: 2px;
+		background-color: rgb(241, 78, 56);
+		width: 125px;
+		content: "";
+		margin: 5px 0px;
+    }
+	.auction-list-storage{
+		display: flex;
+		flex-wrap: wrap;
+		
+	}
+	
+	.div-item{
+		margin-bottom: 25px;
+		width: 50%;
+		display: flex;
+		
+		.auction-img{
+			margin-right: 15px;
+		}
+		
+		.auction-desciption{
+			display:flex ;
+			flex-direction: column;
+			justify-content: center;
+		}
+	}
+}
+
+/******************************************************/
+/* AUCTION LIST SECTION */
+.auction-list-section{
+		h2{
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+		
+	h2::after{
+		display: block;
+		height: 2px;
+		background-color: rgb(241, 78, 56);
+		width: 125px;
+		content: "";
+		margin: 5px 0px;
+    }
+	.auction-list-storage{
+		display: flex;
+		flex-wrap: wrap;
+		
+	}
+	
+	.div-item{
+		margin-bottom: 25px;
+		width: 50%;
+		display: flex;
+		
+		.auction-img{
+			margin-right: 15px;
+		}
+		
+		.auction-desciption{
+			display:flex ;
+			flex-direction: column;
+			justify-content: center;
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

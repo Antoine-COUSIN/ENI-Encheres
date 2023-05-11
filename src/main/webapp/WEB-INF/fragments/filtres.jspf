@@ -1,77 +1,128 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 
-	<form action="liste_auctions" method="POST">
-		<p>Filtres : </p>
-		
-		<div>
-			<input type="text" name="article-name" placeholder="Le nom de l'article contient"/>	
-			
-			<label for="selected-category">Catégories : </label>
-			<select name="category">
-				<option value=0 >Toutes</option>
-				
-				<c:forEach var="cat" items="${categories}">
-					<option value="${cat.no_categorie }">${cat.getLibelle() }</option>
-				</c:forEach>
-			</select>
-		</div>
-		
-		
-		<c:choose>
-			<c:when test="${ isConnected }">
-				<div>
-				    <fieldset>
-				        <div id="purchase_part">
-				            <input id="purchases-radio" type="radio" name="option" value="my-purchases" />
-				            <label>Mes achats</label>
-				            <div id="purchasesDiv">
-				                <input id="open_auction" type="checkbox" name="open_auction" value="open_auction" />
-				                <label for="open_auction">enchères ouvertes</label>
-				                
-				                <input id="my_auctions" type="checkbox" name="my_auctions" value="my_auctions" />
-				                <label for="my_auctions">mes enchères</label>
-				                
-				                <input id="my_auctions_won" type="checkbox" name="my_auctions_won" value="my_auctions_won "/>
-				                <label for="my_auctions_won">mes enchères remportées</label>
-				            </div>
-				        </div>
-				        <div>
-				            <input id="sales-radio" type="radio" name="option" value="my-sales" />
-				            <label>Mes ventes</label>
-				            <div id="salesDiv">
-				                <input id="my_sales" type="checkbox" name="my_sales" value="my-current-sales"/>
-				                <label for="my_sales">mes ventes en cours</label>
-				                
-				                <input id="not_started_sales" type="checkbox" name="not_started_sales" value="sales-not-started"/>
-				                <label for="not_started_sales">ventes non débutées</label>
-				                
-				                <input id="closed_sales" type="checkbox" name="closed_sales" value="closed-sales"/>
-				                <label for="closed_sales">ventes terminées</label>
-				            </div>
-				        </div>
-				    </fieldset>
+<div class="auction-filter">
+	<div class="row">
+		<div class="col-12">
+			<form action="liste_auctions" method="POST">
+				<div class="row">
+					<div class="col-2"></div>
+					<div class="col-5">
+						<div class="row">
+							<div class="col-12">
+								<span>Filtres : </span>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-12">
+								<input type="text" name="article-name" placeholder="Le nom de l'article contient"/>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-12">
+								<label for="selected-category">Catégories : </label>
+								<select name="category">
+									<option value=0 >Toutes</option>
+									
+									<c:forEach var="cat" items="${categories}">
+										<option value="${cat.no_categorie }">${cat.getLibelle() }</option>
+									</c:forEach>
+								</select>
+							</div>
+						</div>
+						<c:choose>
+							<c:when test="${ isConnected }">
+								<div class="row">
+									<div class="col-6">
+										<div class="row">
+											<div class="col-12">
+												<input id="purchases-radio" type="radio" name="option" value="my-purchases" />
+									        	<label>Mes achats</label>
+											</div>
+										</div>
+											
+										<div class="row">
+											<div class="col-12">
+												<input id="open_auction" type="checkbox" name="open_auction" value="open_auction" />
+									            <label for="open_auction">enchères ouvertes</label>
+											</div>
+										</div>
+											
+										<div class="row">
+											<div class="col-12">
+												<input id="my_auctions" type="checkbox" name="my_auctions" value="my_auctions" />
+									            <label for="my_auctions">mes enchères</label>
+											</div>
+										</div>
+											
+										<div class="row">
+											<div class="col-12">
+												<input id="my_auctions_won" type="checkbox" name="my_auctions_won" value="my_auctions_won "/>
+									        	<label for="my_auctions_won">mes enchères remportées</label>
+											</div>
+										</div>
+									</div>
+									
+									<div class="col-6">
+										<div class="row">
+											<div class="col-12">
+												<input id="sales-radio" type="radio" name="option" value="my-sales" />
+										    	<label>Mes ventes</label>
+											</div>
+										</div>
+											
+										<div class="row">
+											<div class="col-12">
+												<input id="my_sales" type="checkbox" name="my_sales" value="my-current-sales"/>
+											    <label for="my_sales">mes ventes en cours</label>
+											</div>
+										</div>
+											
+										<div class="row">
+											<div class="col-12">
+												<input id="not_started_sales" type="checkbox" name="not_started_sales" value="sales-not-started"/>
+											    <label for="not_started_sales">ventes non débutées</label>
+											</div>
+										</div>
+											
+										<div class="row">
+											<div class="col-12">
+												<input id="closed_sales" type="checkbox" name="closed_sales" value="closed-sales"/>
+												<label for="closed_sales">ventes terminées</label>
+											</div>
+										</div>
+									</div>
+								</div>
+							</c:when>
+						</c:choose>
+					</div>
+					<div class="col-3">
+						<div class="search-button-box">
+							<button class="btn btn-primary" type="submit" value="Rechercher">Rechercher</button>
+						</div>
+					</div>
+					<div class="col-2">
+					</div>
 				</div>
-			</c:when>
-
-		</c:choose>
-		
-		
-		<div>
-			<input type="submit" value="Rechercher"/> 
+			</form>						
 		</div>
-		<c:choose>
-			<c:when test="${empty articles }">
-				 <p>Aucun article à afficher</p>
-			</c:when>
-			<c:otherwise>
-				
-			</c:otherwise>
-		</c:choose>
-		<div>
-			
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<div class="no-article">
+				<c:choose>
+					<c:when test="${empty articles }">
+						<p>Aucun article à afficher</p>
+					</c:when>
+					<c:otherwise>
+								
+					</c:otherwise>
+				</c:choose>
+			</div>	
 		</div>
-	</form>
+	</div>
+</div>
 	
 	
 	

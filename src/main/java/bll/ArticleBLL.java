@@ -32,8 +32,8 @@ private ArticleDAO articleDAO;
 		return articleDAO.filteredSearch(no_category, name);
 	}
 	
-	public List<Item> completeFilteredSearchPurchases(int no_category, String name, String sell_status ,int no_user) {
-		return articleDAO.completeFilteredSearchPurchases(no_category, name, sell_status, no_user);
+	public List<Item> completeFilteredSearchPurchases(int no_category, String name, String sellStatus1, String sellStatus2, String sellStatus3 ,int no_user, String option) {
+		return articleDAO.completeFilteredSearchPurchases(no_category, name, sellStatus1, sellStatus2, sellStatus3, no_user, option);
 	}
 	
 }

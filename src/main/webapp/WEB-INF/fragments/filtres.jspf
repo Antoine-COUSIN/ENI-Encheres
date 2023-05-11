@@ -40,13 +40,13 @@
 				            <input id="sales-radio" type="radio" name="option" value="my-sales" />
 				            <label>Mes ventes</label>
 				            <div id="salesDiv" class="disabled">
-				                <input id="my_sales" type="checkbox" name="my_sales"/>
+				                <input id="my_sales" type="checkbox" name="my_sales" value="my-current-sales"/>
 				                <label for="my_sales">mes ventes en cours</label>
 				                
-				                <input id="not_started_sales" type="checkbox" name="not_started_sales"/>
+				                <input id="not_started_sales" type="checkbox" name="not_started_sales" value="sales-not-started"/>
 				                <label for="not_started_sales">ventes non débutées</label>
 				                
-				                <input id="closed_sales" type="checkbox" name="closed_sales"/>
+				                <input id="closed_sales" type="checkbox" name="closed_sales" value="closed-sales"/>
 				                <label for="closed_sales">ventes terminées</label>
 				            </div>
 				        </div>

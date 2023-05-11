@@ -39,10 +39,14 @@
 						<!-- <label for="password">Mot de passe :</label> -->
 						<input type="password" id="password_id" placeholder="Mot de passe *" name="password" />
 			 		</div>
-			 		<div>
-			 			<!-- <label for="newPassword">Nouveau mot de passe :</label> -->
-			 			<input type="password" id="newPassword_id" placeholder="Nouveau mot de passe *" name="newPassword" />
-			 		</div>
+			 		<c:choose>
+				 		<c:when test="${ previousPage == 'update-user' }">
+							<div>
+					 			<!-- <label for="newPassword">Nouveau mot de passe :</label> -->
+					 			<input type="password" id="newPassword_id" placeholder="Nouveau mot de passe *" name="newPassword" />
+					 		</div>
+						</c:when>
+					</c:choose>	
 				</div>
 				
 				
@@ -64,11 +68,10 @@
 						<!-- <label for="city">Ville :</label> -->
 						<input type="text" id="city_id" name="city" placeholder="Ville *" value="${!empty user.cityAddress ? user.cityAddress : ''}"/>
 			 		</div>
-			 		<div>
-						<!-- <label for="confirmPassword">Confirmation :</label> -->
+					<div>
+					<!-- <label for="confirmPassword">Confirmation :</label> -->
 						<input type="password" id="confirmPassword_id" placeholder="Confirmation *" name="confirmPassword" />
 			 		</div>
-					
 				</div>
 			</div>
 			

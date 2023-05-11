@@ -65,10 +65,14 @@ public class ArticleDAOJdbcImpl implements ArticleDAO{
 	
 	private static final String SELECT_ONE_ITEM = "SELECT no_article, nom_article, description, date_debut_enchere, date_fin_enchere, prix_initial, prix_vente,"
 			+ " A.no_utilisateur, UTILISATEURS.pseudo AS USER_PSEUDO, A.no_categorie, CATEGORIES.libelle AS CAT_LIB,"
-			+ " etat_vente, image FROM ARTICLES_VENDUS A"
+			+ " etat_vente, image"
+			+ " FROM ARTICLES_VENDUS A"
 			+ " JOIN CATEGORIES ON CATEGORIES.no_categorie = A.no_categorie"
 			+ " JOIN UTILISATEURS ON UTILISATEURS.no_utilisateur = A.no_utilisateur"
 			+ " WHERE no_article = ?";
+	
+	private static final String GET_SELECTED_PICKUP_POINT = "SELECT no_article, rue, code_postal, ville FROM RETRAITS WHERE no_article = ?";
+	
 	
 	@Override
 	public List<Category> listAllCategories() {
@@ -426,7 +430,38 @@ public class ArticleDAOJdbcImpl implements ArticleDAO{
 				newItem.setSell_status(rs.getString("etat_vente"));
 				newItem.setImage_article(rs.getString("image"));
 				
+				
+				
 				result = newItem;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+
+	@Override
+	public PickupPoint getSelectedItemPickupPoint(int no_article) {
+		PickupPoint result = null;
+		try (Connection cnx = ConnectionProvider.getConnection();) {
+			
+			PreparedStatement ps = cnx.prepareStatement(GET_SELECTED_PICKUP_POINT);
+			
+			ps.setInt(1, no_article);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			if (rs.next()) {
+				PickupPoint pu = new PickupPoint();
+				
+				pu.setNo_item(rs.getInt("no_article"));
+				pu.setStreetAddress(rs.getString("rue"));
+				pu.setPostalCode(rs.getString("code_postal"));
+				pu.setCityAddress(rs.getString("ville"));
+				
+				result = pu;
 			}
 			
 		} catch (SQLException e) {

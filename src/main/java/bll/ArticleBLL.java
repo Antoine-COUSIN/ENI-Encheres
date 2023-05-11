@@ -39,5 +39,9 @@ private ArticleDAO articleDAO;
 	public Item selectOneItem(int no_article) {
 		return articleDAO.selectOneItem(no_article);
 	}
+
+	public PickupPoint getSelectedItemPickupPoint(int no_article) {
+		return articleDAO.getSelectedItemPickupPoint(no_article);
+	}
 	
 }

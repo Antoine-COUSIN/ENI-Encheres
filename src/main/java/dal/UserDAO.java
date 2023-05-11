@@ -10,4 +10,6 @@ public interface UserDAO {
 	public boolean checkPseudo(String pseudo);
 	public void updateUser(User user);
 	public void deleteUser(int no_user);
+	
+	public User getUser(int no_user);
 }

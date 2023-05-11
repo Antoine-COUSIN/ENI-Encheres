@@ -19,6 +19,7 @@ public class UserDAOJdbcImpl implements UserDAO {
 											+ " credit = ?, administrateur = ? WHERE no_utilisateur = ?";
 	private static final String DELETE_USER = "DELETE FROM UTILISATEURS WHERE no_utilisateur = ?";
 	
+	private static final String GET_USER = "SELECT * FROM UTILISATEURS WHERE no_utilisateur = ?";
 	
 	@Override
 	public User login(String pseudoOrEmail, String password) {
@@ -181,6 +182,41 @@ public class UserDAOJdbcImpl implements UserDAO {
 			e.printStackTrace();
 		}
 		
+	}
+
+	@Override
+	public User getUser(int no_user) {
+		User result = null;
+		try (Connection cnx = ConnectionProvider.getConnection();) {
+			
+			PreparedStatement ps = cnx.prepareStatement(GET_USER);
+			ps.setInt(1, no_user);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			if (rs.next()) {
+				User loggedUser = new User();
+				loggedUser.setNo_user(rs.getInt("no_utilisateur"));
+				loggedUser.setPseudo(rs.getString("pseudo"));
+				loggedUser.setLastName(rs.getString("nom"));
+				loggedUser.setFirstName(rs.getString("prenom"));
+				loggedUser.setEmail(rs.getString("email"));
+				loggedUser.setPhoneNumber(rs.getString("telephone"));
+				loggedUser.setStreetAddress(rs.getString("rue"));
+				loggedUser.setPostalCodeAddress(rs.getString("code_postal"));
+				loggedUser.setCityAddress(rs.getString("ville"));
+				loggedUser.setPassword(rs.getString("mot_de_passe"));
+				
+				loggedUser.setCredit(rs.getInt("credit"));
+				loggedUser.setAdmin(rs.getBoolean("administrateur"));
+				
+				result = loggedUser;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 }

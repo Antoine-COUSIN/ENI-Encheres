@@ -4,6 +4,7 @@ public abstract class DAOFactory {
 
 	private static UserDAO userDAO;
 	private static ArticleDAO articleDAO;
+	private static AuctionsDAO auctionsDAO;
 	
 	public static UserDAO getUserDAO() {
 		if (userDAO == null) {
@@ -17,6 +18,13 @@ public abstract class DAOFactory {
 			articleDAO = new ArticleDAOJdbcImpl();
 		}
 		return articleDAO;
+	}
+	
+	public static AuctionsDAO getAuctionsDAO() {
+		if (auctionsDAO == null) {
+			auctionsDAO = new AuctionsDAOJdbcImpl();
+		}
+		return auctionsDAO;
 	}
 	
 }

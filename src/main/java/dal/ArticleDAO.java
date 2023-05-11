@@ -15,4 +15,6 @@ public interface ArticleDAO {
 	
 	public List<Item> completeFilteredSearchPurchases(int no_category, String name, String sellStatus1, String sellStatus2, String sellStatus3, int no_user, String option);
 	public List<Item> completeFilteredSearchSales(int no_category, String name, String sell_status, int no_user);
+	
+	public Item selectOneItem(int no_item);
 }

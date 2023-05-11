@@ -36,4 +36,8 @@ private ArticleDAO articleDAO;
 		return articleDAO.completeFilteredSearchPurchases(no_category, name, sellStatus1, sellStatus2, sellStatus3, no_user, option);
 	}
 	
+	public Item selectOneItem(int no_article) {
+		return articleDAO.selectOneItem(no_article);
+	}
+	
 }

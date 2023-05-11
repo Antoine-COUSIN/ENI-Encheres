@@ -63,6 +63,12 @@ public class ArticleDAOJdbcImpl implements ArticleDAO{
 			+ " AND (? IS NULL OR A.etat_vente = ?)"
 			+ " AND (? IS NULL OR ? IS NULL OR (A.etat_vente = ? AND A.no_utilisateur = ?))";
 	
+	private static final String SELECT_ONE_ITEM = "SELECT no_article, nom_article, description, date_debut_enchere, date_fin_enchere, prix_initial, prix_vente,"
+			+ " A.no_utilisateur, UTILISATEURS.pseudo AS USER_PSEUDO, A.no_categorie, CATEGORIES.libelle AS CAT_LIB,"
+			+ " etat_vente, image FROM ARTICLES_VENDUS A"
+			+ " JOIN CATEGORIES ON CATEGORIES.no_categorie = A.no_categorie"
+			+ " JOIN UTILISATEURS ON UTILISATEURS.no_utilisateur = A.no_utilisateur"
+			+ " WHERE no_article = ?";
 	
 	@Override
 	public List<Category> listAllCategories() {
@@ -386,6 +392,43 @@ public class ArticleDAOJdbcImpl implements ArticleDAO{
 				
 				result.add(newItem);
 			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+
+	@Override
+	public Item selectOneItem(int no_item) {
+		Item result = new Item();
+		try (Connection cnx = ConnectionProvider.getConnection();) {
+			
+			PreparedStatement ps = cnx.prepareStatement(SELECT_ONE_ITEM);
+			ps.setInt(1, no_item);
+			
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				Item newItem = new Item();
+				newItem.setNo_article(rs.getInt("no_article"));
+				newItem.setName_article(rs.getString("nom_article"));
+				newItem.setDescr_article(rs.getString("description"));
+				LocalDateTime localDateTime = rs.getTimestamp("date_debut_enchere").toLocalDateTime();
+				newItem.setStart_auction(localDateTime);
+				LocalDateTime localDateTime2 = rs.getTimestamp("date_fin_enchere").toLocalDateTime();
+				newItem.setEnd_auction(localDateTime2);
+				newItem.setInitial_price(rs.getInt("prix_initial"));
+				newItem.setSell_price(rs.getInt("prix_vente"));
+				newItem.setNo_user(rs.getInt("no_utilisateur"));
+				newItem.setUser_Pseudo(rs.getString("USER_PSEUDO"));
+				newItem.setNo_category(rs.getInt("no_categorie"));
+				newItem.setCategory_Lib(rs.getString("CAT_LIB"));
+				newItem.setSell_status(rs.getString("etat_vente"));
+				newItem.setImage_article(rs.getString("image"));
+				
+				result = newItem;
+			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

@@ -7,6 +7,8 @@
 	
 	<h1>Nouvelle vente</h1>
 	
+	<%@include file="../fragments/errors.jspf" %>
+	
 	<img id="uploadPreview" style="width: 100px; height: 100px" />
 	
 	<form action="createAuction" method="POST" enctype="multipart/form-data">

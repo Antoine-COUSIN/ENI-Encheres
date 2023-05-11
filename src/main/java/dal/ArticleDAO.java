@@ -18,4 +18,5 @@ public interface ArticleDAO {
 	
 	public Item selectOneItem(int no_item);
 	public PickupPoint getSelectedItemPickupPoint(int no_article);
+	
 }

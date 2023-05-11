@@ -17,4 +17,5 @@ public interface ArticleDAO {
 	public List<Item> completeFilteredSearchSales(int no_category, String name, String sell_status, int no_user);
 	
 	public Item selectOneItem(int no_item);
+	public PickupPoint getSelectedItemPickupPoint(int no_article);
 }

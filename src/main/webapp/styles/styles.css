@@ -22,12 +22,6 @@ body h2::after {
 
 /******************************************/
 /* HEADER */
-header {
-  background-image: url(../img/header-background.jpg);
-  background-position: center;
-  background-size: cover;
-  height: 75vh;
-}
 header .header-nav {
   display: flex;
   flex-direction: row;
@@ -50,7 +44,7 @@ header .nav-li {
   margin-bottom: 50px;
 }
 .connection h2 {
-  margin-bottom: 25px;
+  margin-bottom: 40px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -74,13 +68,13 @@ header .nav-li {
   align-items: center;
   border: 1px solid rgb(150, 150, 150);
   border-radius: 5px;
-  padding: 30px 30px;
+  padding: 40px 30px;
 }
 .connection form .login-form-box input {
   margin-bottom: 30px;
   border: none;
   border-bottom: 1px solid black;
-  width: 250px;
+  width: 300px;
 }
 .connection form .login-form-box .submit-box {
   margin-top: 20px;

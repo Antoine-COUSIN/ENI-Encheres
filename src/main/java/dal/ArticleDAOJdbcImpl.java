@@ -31,9 +31,9 @@ public class ArticleDAOJdbcImpl implements ArticleDAO{
 														 "WHERE (A.no_categorie = ? OR ? IS NULL)" + 
 														 "AND (nom_article LIKE ? OR ? IS NULL)";
 	
-	private static final String COMPLETE_FILTERED_SEARCH_PURCHASES = "SELECT A.no_article, A.nom_article, A.description, A.date_debut_enchere, A.date_fin_enchere, "
+	private static final String COMPLETE_FILTERED_SEARCH_PURCHASES = "SELECT A.no_article, A.nom_article, A.description, A.date_debut_enchere, A.date_fin_enchere,"
 			+ " A.prix_initial, A.prix_vente,"
-			+ " A.no_utilisateur, U.pseudo AS VENDEUR, A.no_categorie, C.libelle AS CAT_LIB, A.etat_vente, A.image, E.no_utilisateur,"
+			+ " A.no_utilisateur, U.pseudo AS VENDEUR, A.no_categorie, C.libelle AS CAT_LIB, A.etat_vente, A.image,"
 			+ " UT.no_utilisateur, UT.pseudo AS ACHETEUR"
 			+ " FROM ARTICLES_VENDUS A"
 			+ " LEFT JOIN ENCHERES E ON E.no_article = A.no_article"
@@ -43,13 +43,14 @@ public class ArticleDAOJdbcImpl implements ArticleDAO{
 			
 			+ " AND (? IS NULL OR A.no_categorie = ?)"
 			+ " AND (? IS NULL OR A.nom_article LIKE '%' + ? + '%')"
-			+ " AND (? IS NULL OR A.etat_vente = ?)"
-			+ " AND (? IS NULL OR UT.no_utilisateur = ?)"
-			+ " AND (? IS NULL OR ? IS NULL OR (A.etat_vente = ? AND UT.no_utilisateur = ?))";
+			
+			+ " AND (((? IS NULL) OR (? IS NULL) OR (? IS NULL)) OR A.etat_vente IN (?, ?, ?))"
+			+ " AND (? IS NULL OR UT.no_utilisateur = ?)";
+	
 	
 	private static final String COMPLETE_FILTERED_SEARCH_SALES = "SELECT A.no_article, A.nom_article, A.description, A.date_debut_enchere, A.date_fin_enchere,"
 			+ " A.prix_initial, A.prix_vente,"
-			+ " A.no_utilisateur, U.pseudo AS VENDEUR, A.no_categorie, C.libelle AS CAT_LIB, A.etat_vente, A.image, E.no_utilisateur,"
+			+ " A.no_utilisateur, U.pseudo AS VENDEUR, A.no_categorie, C.libelle AS CAT_LIB, A.etat_vente, A.image,"
 			+ " UT.no_utilisateur, UT.pseudo AS ACHETEUR"
 			+ " FROM ARTICLES_VENDUS A"
 			+ " LEFT JOIN ENCHERES E ON E.no_article = A.no_article"
@@ -221,11 +222,20 @@ public class ArticleDAOJdbcImpl implements ArticleDAO{
 	
 
 	@Override
-	public List<Item> completeFilteredSearchPurchases(int no_category, String name, String sell_status, int no_user) {
+	public List<Item> completeFilteredSearchPurchases(int no_category, String name, String sellStatus1, String sellStatus2, String sellStatus3, int no_user, String option) {
 		List<Item> result = new ArrayList<>();
+		String trueQuery = "";
 		try (Connection cnx = ConnectionProvider.getConnection();) {
+			switch (option) {
+			case "purchases":
+				trueQuery = COMPLETE_FILTERED_SEARCH_PURCHASES + " AND (((? IS NULL) OR (? IS NULL) OR (? IS NULL)) OR ? IS NULL OR (A.etat_vente IN (?, ?, ?) AND UT.no_utilisateur = ?))";
+				break;
+			case "sales":
+				trueQuery = COMPLETE_FILTERED_SEARCH_PURCHASES + " AND (((? IS NULL) OR (? IS NULL) OR (? IS NULL)) OR ? IS NULL OR (A.etat_vente IN (?, ?, ?) AND A.no_utilisateur = ?))";
+				break;
+			}
 			
-			PreparedStatement ps = cnx.prepareStatement(COMPLETE_FILTERED_SEARCH_PURCHASES);
+			PreparedStatement ps = cnx.prepareStatement(trueQuery);
 			
 			if (no_category != 0) {
 			    ps.setInt(1, no_category);
@@ -243,29 +253,33 @@ public class ArticleDAOJdbcImpl implements ArticleDAO{
 			    ps.setNull(4, java.sql.Types.VARCHAR);
 			}
 			
-			if (sell_status != null && !sell_status.isEmpty()) {
-			    ps.setString(5, sell_status);
-			    ps.setString(6, sell_status);
-			    ps.setString(9, sell_status);
-			    ps.setString(11, sell_status);
-			} else {
-			    ps.setNull(5, java.sql.Types.VARCHAR);
-			    ps.setNull(6, java.sql.Types.VARCHAR);
-			    ps.setNull(9, java.sql.Types.VARCHAR);
-			    ps.setNull(11, java.sql.Types.VARCHAR);
-			}
+			ps.setString(5, sellStatus1);
+			ps.setString(8, sellStatus1);
+			ps.setString(13, sellStatus1);
+			ps.setString(17, sellStatus1);
+			
+			ps.setString(6, sellStatus2);
+			ps.setString(9, sellStatus2);
+			ps.setString(14, sellStatus2);
+			ps.setString(18, sellStatus2);
+			
+			ps.setString(7, sellStatus3);
+			ps.setString(10, sellStatus3);
+			ps.setString(15, sellStatus3);
+			ps.setString(19, sellStatus3);
+			
 			
 			if (no_user != 0) {
-				ps.setInt(7, no_user);
-				ps.setInt(8, no_user);
-				ps.setInt(10, no_user);
+				ps.setInt(11, no_user);
 				ps.setInt(12, no_user);
+				ps.setInt(16, no_user);
+				ps.setInt(20, no_user);
 			} else {
 				
-				ps.setNull(7, java.sql.Types.INTEGER);
-				ps.setNull(8, java.sql.Types.INTEGER);
-				ps.setNull(10, java.sql.Types.INTEGER);
+				ps.setNull(11, java.sql.Types.INTEGER);
 				ps.setNull(12, java.sql.Types.INTEGER);
+				ps.setNull(16, java.sql.Types.INTEGER);
+				ps.setNull(20, java.sql.Types.INTEGER);
 			}
 			
 			ResultSet rs = ps.executeQuery();

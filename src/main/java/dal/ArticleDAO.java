@@ -13,6 +13,6 @@ public interface ArticleDAO {
 	public void insertItem(Item item, PickupPoint pickupPoint);
 	public List<Item> filteredSearch(int no_category, String name);
 	
-	public List<Item> completeFilteredSearchPurchases(int no_category, String name, String sell_status, int no_user);
+	public List<Item> completeFilteredSearchPurchases(int no_category, String name, String sellStatus1, String sellStatus2, String sellStatus3, int no_user, String option);
 	public List<Item> completeFilteredSearchSales(int no_category, String name, String sell_status, int no_user);
 }

@@ -39,7 +39,7 @@
 				        <div>
 				            <input id="sales-radio" type="radio" name="option" value="my-sales" />
 				            <label>Mes ventes</label>
-				            <div id="salesDiv" class="disabled">
+				            <div id="salesDiv">
 				                <input id="my_sales" type="checkbox" name="my_sales" value="my-current-sales"/>
 				                <label for="my_sales">mes ventes en cours</label>
 				                
@@ -60,4 +60,19 @@
 		<div>
 			<input type="submit" value="Rechercher"/> 
 		</div>
+		<c:choose>
+			<c:when test="${empty articles }">
+				 <p>Aucun article à afficher</p>
+			</c:when>
+			<c:otherwise>
+				
+			</c:otherwise>
+		</c:choose>
+		<div>
+			
+		</div>
 	</form>
+	
+	
+	
+	

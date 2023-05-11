@@ -10,7 +10,7 @@
 	<div>	
 		<!-- Liste des articles en vente  -->
 		<c:forEach var="article" items="${ articles }">	
-			<div>
+			<div class="div-item" onclick="location.href='${pageContext.request.contextPath}/article-detail?id=${ article.no_article }';">
 				<c:choose>
 					<c:when test="${!empty article.image_article }">
 						<img alt="article-pic" src="${pageContext.request.contextPath}/uploads/${ article.image_article }">

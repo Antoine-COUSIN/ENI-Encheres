@@ -29,7 +29,8 @@
 					<span>Téléphone :</span>
 					<span>Rue :</span>
 					<span>Code postal :</span>
-					<span>Ville :</span>	
+					<span>Ville :</span>
+					<span>Crédits :</span>
 				</div>
 			</div>
 			
@@ -43,6 +44,7 @@
 					<span>${ user.streetAddress }</span>
 					<span>${ user.postalCodeAddress }</span>
 					<span>${ user.cityAddress }</span>
+					<span>${ user.credit } points</span>
 				</div>
 			</div>
 			<div class="col-4"></div>
@@ -55,6 +57,5 @@
 			</div>
 		</div>
 	</section>
-		root
 	<%@include file="../fragments/footer.jspf" %>
 </body>

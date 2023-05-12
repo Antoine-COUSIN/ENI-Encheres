@@ -45,18 +45,14 @@ public class CreateAuctionServlet extends HttpServlet {
 		request.setAttribute("currentDate", formattedCurrentDate);
 		request.setAttribute("endAuctionDate", formattedEndDate);
 		
-		
-		//DELETE THIS
-		List<Category> categories = articleBLL.listCategories();
-		request.getSession().setAttribute("categories", categories);
-		//***************
-		
 		request.getRequestDispatcher("WEB-INF/jsp/create-auction.jsp").forward(request, response);
 		
 	}
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		
 		String action = request.getParameter("action");
 		
 		if ("save".equals(action)) {
@@ -96,7 +92,7 @@ public class CreateAuctionServlet extends HttpServlet {
 			
 			try {
 				articleBLL.createItem(newItem, newPU);
-				request.getRequestDispatcher("WEB-INF/jsp/liste-encheres.jsp").forward(request, response);
+				response.sendRedirect(request.getContextPath() + "/liste_auctions");
 			} catch (ArticleBLLException e) {
 				request.setAttribute("createArticleError", e.getErrors());
 				request.getRequestDispatcher("WEB-INF/jsp/create-auction.jsp").forward(request, response);

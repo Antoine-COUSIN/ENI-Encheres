@@ -103,7 +103,7 @@
 										<label for="streetAddress">Rue :</label>
 									</div>
 									<div class="col-8">
-										<input type="text" name="streetAddress" value="${user.cityAddress }" />
+										<input type="text" name="streetAddress" value="${user.streetAddress }" />
 									</div>
 								</div>
 								<div class="row">

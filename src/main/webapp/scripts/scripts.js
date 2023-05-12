@@ -49,6 +49,7 @@ salesRadio.addEventListener('change', () => {
 });
 
 //Script to modify checkboxes in filters
+/*
 openAuctionCheckbox.addEventListener('change', () => {
   if (openAuctionCheckbox.checked) {
     myAuctionsWonCheckbox.checked = false;
@@ -60,13 +61,4 @@ myAuctionsWonCheckbox.addEventListener('change', () => {
     openAuctionCheckbox.checked = false;
   }
 });
-
-myAuctionsWonCheckbox.addEventListener('change', () => {
-	if (myAuctionsWonCheckbox.checked) {
-		openAuctionCheckbox.checked = false
-	}
-})
-
-
-
-
+*/

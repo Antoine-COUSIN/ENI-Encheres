@@ -36,15 +36,17 @@
 				<p>Description : ${ selectedItem.descr_article }</p>
 				<p>Catégorie : ${ selectedItem.category_Lib }</p>
 				
-				<p>Meilleure offre : ${selectedBid.bid_amount } €</p>
+				<p>Meilleure offre : ${selectedBid.bid_amount } points</p>
 				
 				<fmt:parseDate value="${selectedItem.end_auction}" pattern="yyyy-MM-dd'T'HH:mm" var="end_auction"/>
 				<fmt:formatDate value="${end_auction}" pattern="dd-MM-yyyy HH:mm" var="end_auction" />
-				<p>Fin de l'enchère : </p><p data-end="${selectedItem.end_auction}">${end_auction}</p>
+				<p>Fin de l'enchère : <span data-end="${selectedItem.end_auction}">${end_auction}</span></p>
 				<p>Temps restant : <span id="timer"></span></p>
 				
-				<p>Retrait : ${!empty selectedPickupPoint.streetAddress ? selectedPickupPoint.streetAddress : '' }</p>
-				<p>${ !empty selectedPickupPoint.postalCode ? selectedPickupPoint.postalCode : '' } ${ !empty selectedPickupPoint.cityAddress ? selectedPickupPoint.cityAddress : '' }</p>
+				
+				<p>Retrait : ${!empty selectedPickupPoint.streetAddress ? selectedPickupPoint.streetAddress : userVendor.streetAddress }</p>
+				<p>${ !empty selectedPickupPoint.postalCode ? selectedPickupPoint.postalCode : userVendor.postalCodeAddress } ${ !empty selectedPickupPoint.cityAddress ? selectedPickupPoint.cityAddress : userVendor.cityAddress }</p>
+				
 				
 				<p>Vendeur : ${selectedItem.user_Pseudo }</p>
 			</div>

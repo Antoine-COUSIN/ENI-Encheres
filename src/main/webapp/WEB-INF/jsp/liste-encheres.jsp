@@ -25,7 +25,7 @@
 			<div class="col-12">
 				<div class="auction-list-storage">
 					<c:forEach var="article" items="${ articles }">	
-						<div class="div-item" onclick="location.href='${pageContext.request.contextPath}/article-detail?id=${ article.no_article }';">
+						<div style="cursor: pointer;" class="div-item" onclick="location.href='${pageContext.request.contextPath}/article-detail?id=${ article.no_article }';">
 							<div class="auction-img">
 								<c:choose>
 									<c:when test="${!empty article.image_article }">
@@ -39,7 +39,7 @@
 							
 							<div class="auction-desciption">
 								<p>${article.getName_article() }</p>
-								<p>Prix : ${article.getSell_price() } points</p>
+								<p>Prix : ${article.initial_price } points</p>
 								
 								<fmt:parseDate value="${article.end_auction}" pattern="yyyy-MM-dd'T'HH:mm" var="end_auction"/>
 								<fmt:formatDate value="${end_auction}" pattern="dd-MM-yyyy HH:mm" var="end_auction" />

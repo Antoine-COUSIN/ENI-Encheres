@@ -89,7 +89,7 @@
 					</c:when>
 					
 					<c:when test="${ previousPage == 'update-user' }">
-						<p>Crédit ${!empty user.credit ? user.credit : '0'}</p>
+						<p>Crédit ${!empty user.credit ? user.credit : '0'} points</p>
 						<div>
 							<button type="submit" value="save" name="action" >Enregistrer</button>
 							<button type="submit" value="delete" name="action" >Supprimer mon compte</button>

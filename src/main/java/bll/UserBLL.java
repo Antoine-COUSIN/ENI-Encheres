@@ -58,6 +58,10 @@ public class UserBLL {
 		userDAO.deleteUser(id);
 	}
 	
+	public User getUser(int no_user) {
+		return userDAO.getUser(no_user);
+	}
+	
 	
 	public void checkAuth(String login, String password) throws UserBLLException {
 		UserBLLException e = new UserBLLException();

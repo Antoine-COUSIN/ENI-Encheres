@@ -41,55 +41,60 @@
 									        	<label>Mes achats</label>
 											</div>
 										</div>
-											
-										<div class="row">
-											<div class="col-12">
-												<input id="open_auction" type="checkbox" name="open_auction" value="open_auction" />
-									            <label for="open_auction">enchères ouvertes</label>
+										
+										<div id="purchasesDiv">
+											<div class="row">
+												<div class="col-12">
+													<input id="open_auction" type="checkbox" name="open_auction" value="open_auction" />
+										            <label for="open_auction">enchères ouvertes</label>
+												</div>
 											</div>
-										</div>
-											
-										<div class="row">
-											<div class="col-12">
-												<input id="my_auctions" type="checkbox" name="my_auctions" value="my_auctions" />
-									            <label for="my_auctions">mes enchères</label>
+												
+											<div class="row">
+												<div class="col-12">
+													<input id="my_auctions" type="checkbox" name="my_auctions" value="my_auctions" />
+										            <label for="my_auctions">mes enchères</label>
+												</div>
 											</div>
-										</div>
-											
-										<div class="row">
-											<div class="col-12">
-												<input id="my_auctions_won" type="checkbox" name="my_auctions_won" value="my_auctions_won "/>
-									        	<label for="my_auctions_won">mes enchères remportées</label>
+												
+											<div class="row">
+												<div class="col-12">
+													<input id="my_auctions_won" type="checkbox" name="my_auctions_won" value="my_auctions_won "/>
+										        	<label for="my_auctions_won">mes enchères remportées</label>
+												</div>
 											</div>
 										</div>
 									</div>
+									
 									
 									<div class="col-6">
 										<div class="row">
 											<div class="col-12">
 												<input id="sales-radio" type="radio" name="option" value="my-sales" />
-										    	<label>Mes ventes</label>
+											    <label>Mes ventes</label>
 											</div>
 										</div>
-											
-										<div class="row">
-											<div class="col-12">
-												<input id="my_sales" type="checkbox" name="my_sales" value="my-current-sales"/>
-											    <label for="my_sales">mes ventes en cours</label>
+										
+										<div id="salesDiv">		
+											<div class="row">
+												<div class="col-12">
+													<input id="my_sales" type="checkbox" name="my_sales" value="my-current-sales"/>
+												    <label for="my_sales">mes ventes en cours</label>
+												</div>
 											</div>
-										</div>
-											
-										<div class="row">
-											<div class="col-12">
-												<input id="not_started_sales" type="checkbox" name="not_started_sales" value="sales-not-started"/>
-											    <label for="not_started_sales">ventes non débutées</label>
+												
+											<div class="row">
+												<div class="col-12">
+													<input id="not_started_sales" type="checkbox" name="not_started_sales" value="sales-not-started"/>
+												    <label for="not_started_sales">ventes non débutées</label>
+												</div>
 											</div>
-										</div>
-											
-										<div class="row">
-											<div class="col-12">
-												<input id="closed_sales" type="checkbox" name="closed_sales" value="closed-sales"/>
-												<label for="closed_sales">ventes terminées</label>
+												
+											<div class="row">
+												<div class="col-12">
+													<input id="closed_sales" type="checkbox" name="closed_sales" value="closed-sales"/>
+													<label for="closed_sales">ventes terminées</label>
+												</div>
 											</div>
 										</div>
 									</div>

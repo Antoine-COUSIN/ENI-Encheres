@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import bll.ArticleBLL;
 import bll.BidBLL;
 import bll.BidBLLException;
+import bll.UserBLL;
 import bo.Auctions;
 import bo.Item;
 import bo.PickupPoint;
@@ -23,11 +24,13 @@ public class AuctionDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	ArticleBLL articleBLL;
 	BidBLL bidBLL;
+	UserBLL userBLL;
 	
 	@Override
 	public void init() throws ServletException {
 		articleBLL = new ArticleBLL();
 		bidBLL = new BidBLL();
+		userBLL = new UserBLL();
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -36,6 +39,8 @@ public class AuctionDetailServlet extends HttpServlet {
 		Item selectedItem = articleBLL.selectOneItem(no_article);
 		Auctions selectedBid = bidBLL.getBidInfo(no_article);
 		PickupPoint selectedPickupPoint = articleBLL.getSelectedItemPickupPoint(no_article);
+		User userVendor = userBLL.getUser(selectedItem.getNo_user());
+		request.setAttribute("userVendor", userVendor);
 		request.getSession().setAttribute("selectedBid", selectedBid);
 		request.getSession().setAttribute("selectedItem", selectedItem);
 		request.getSession().setAttribute("selectedPickupPoint", selectedPickupPoint);
@@ -48,6 +53,7 @@ public class AuctionDetailServlet extends HttpServlet {
 		String pBid = request.getParameter("bid");
 		User userSession = (User) request.getSession().getAttribute("user");
 		Item item = (Item) request.getSession().getAttribute("selectedItem");
+		
 		
 		try {
 			bidBLL.createBid(item.getNo_article(), userSession.getNo_user(), (pBid != null && pBid != "" ? Integer.parseInt(pBid) : -1));

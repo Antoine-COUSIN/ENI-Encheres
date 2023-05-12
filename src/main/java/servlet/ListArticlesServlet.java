@@ -23,8 +23,10 @@ public class ListArticlesServlet extends HttpServlet {
 		articleBLL = new ArticleBLL();
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		List<Item> articles = articleBLL.listArticles();
+		request.getSession().setAttribute("articles", articles);
+		
 		request.getRequestDispatcher("WEB-INF/jsp/liste-encheres.jsp").forward(request, response);
 	}
 

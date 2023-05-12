@@ -1,0 +1,354 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+* {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/******************************************/
+/* GLOBAL */
+body h2 {
+  margin-top: 25px;
+}
+body h2::after {
+  display: block;
+  height: 2px;
+  background-color: rgb(241, 78, 56);
+  width: 130px;
+  content: "";
+  margin: 5px 0px;
+}
+
+/******************************************/
+/* HEADER */
+header .header-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+header .nav-links ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+header .nav-li {
+  list-style-type: none;
+}
+
+/******************************************************/
+/* LOGIN JSP */
+.connection {
+  margin-bottom: 50px;
+}
+.connection h2 {
+  margin-bottom: 40px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.connection h2::after {
+  display: block;
+  height: 2px;
+  background-color: rgb(241, 78, 56);
+  width: 125px;
+  content: "";
+  margin: 5px 0px;
+}
+.connection form {
+  display: flex;
+  justify-content: center;
+}
+.connection form .login-form-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid rgb(150, 150, 150);
+  border-radius: 5px;
+  padding: 40px 30px;
+}
+.connection form .login-form-box input {
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid black;
+  width: 300px;
+}
+.connection form .login-form-box .submit-box {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 15px;
+}
+.connection form .login-form-box .submit-box button {
+  width: 200px;
+  height: 50px;
+}
+
+/******************************************************/
+/* REGISTER JSP */
+.register {
+  margin-bottom: 50px;
+}
+.register h2 {
+  margin-bottom: 25px;
+  text-align: center;
+}
+.register h2::after {
+  display: block;
+  height: 2px;
+  background-color: rgb(241, 78, 56);
+  width: 130px;
+  content: "";
+  margin: 5px 45%;
+}
+.register form {
+  display: flex;
+  justify-content: center;
+}
+.register .form-box {
+  border: 1px solid rgb(150, 150, 150);
+  border-radius: 5px;
+  width: 50%;
+  padding: 30px 0px;
+}
+.register .form-box .input-box {
+  display: flex;
+  justify-content: space-evenly;
+}
+.register .form-box .input-box input {
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid black;
+  width: 250px;
+}
+.register .form-box .input-box .left-side-box div {
+  display: flex;
+  flex-direction: column;
+}
+.register .form-box .input-box .right-side-box div {
+  display: flex;
+  flex-direction: column;
+}
+.register .form-box .submit-box {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 15px;
+}
+.register .form-box .submit-box button {
+  width: 200px;
+  height: 50px;
+}
+
+/******************************************************/
+/* FILTRE ENCHERES */
+.auction-filter {
+  margin: 25px;
+}
+.auction-filter .search-button-box {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.auction-filter .search-button-box button {
+  width: 300px;
+  height: 100px;
+}
+.auction-filter .no-article {
+  width: 100%;
+  margin: 25px 0px;
+  text-align: center;
+}
+
+/******************************************************/
+/* HOME SECTION */
+.home h2 {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.home h2::after {
+  display: block;
+  height: 2px;
+  background-color: rgb(241, 78, 56);
+  width: 125px;
+  content: "";
+  margin: 5px 0px;
+}
+.home .auction-list-storage {
+  display: flex;
+  flex-wrap: wrap;
+}
+.home .div-item {
+  margin-bottom: 25px;
+  width: 50%;
+  display: flex;
+}
+.home .div-item .auction-img {
+  margin-right: 15px;
+}
+.home .div-item .auction-desciption {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/******************************************************/
+/* AUCTION LIST SECTION */
+.auction-list-section h2 {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.auction-list-section h2::after {
+  display: block;
+  height: 2px;
+  background-color: rgb(241, 78, 56);
+  width: 125px;
+  content: "";
+  margin: 5px 0px;
+}
+.auction-list-section .auction-list-storage {
+  display: flex;
+  flex-wrap: wrap;
+}
+.auction-list-section .div-item {
+  margin-bottom: 25px;
+  width: 50%;
+  display: flex;
+}
+.auction-list-section .div-item .auction-img {
+  margin-right: 15px;
+}
+.auction-list-section .div-item .auction-desciption {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/******************************************************/
+/* SHOW PROFIL SECTION */
+.show-profil h2 {
+  margin-bottom: 50px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.show-profil h2::after {
+  display: block;
+  height: 2px;
+  background-color: rgb(241, 78, 56);
+  width: 125px;
+  content: "";
+  margin: 5px 0px;
+}
+.show-profil .profile-label {
+  display: flex;
+  flex-direction: column;
+}
+.show-profil .profile-value {
+  display: flex;
+  flex-direction: column;
+}
+.show-profil .update-profile {
+  display: flex;
+  justify-content: center;
+}
+.show-profil .update-profile button {
+  margin-top: 25px;
+  width: 200px;
+  height: 50px;
+}
+
+/******************************************************/
+/* ITEM DETAIL SECTION */
+.item-detail-section h2 {
+  margin-bottom: 50px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.item-detail-section h2::after {
+  display: block;
+  height: 2px;
+  background-color: rgb(241, 78, 56);
+  width: 125px;
+  content: "";
+  margin: 5px 0px;
+}
+.item-detail-section .article-img-box {
+  display: flex;
+  justify-content: end;
+  padding-right: 25px;
+}
+.item-detail-section .article-auction-box {
+  display: flex;
+  justify-content: center;
+}
+.item-detail-section .article-auction-box button {
+  width: 100px;
+  height: 50px;
+}
+
+/******************************************************/
+/*CREATE AUCTION  SECTION */
+.create-auction-section h2 {
+  margin-bottom: 50px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.create-auction-section h2::after {
+  display: block;
+  height: 2px;
+  background-color: rgb(241, 78, 56);
+  width: 125px;
+  content: "";
+  margin: 5px 0px;
+}
+.create-auction-section .upload-preview-img-box {
+  display: flex;
+  justify-content: center;
+}
+.create-auction-section .upload-preview-img-box img {
+  width: 75%;
+  height: auto;
+}
+.create-auction-section fieldset {
+  border: 1px solid black;
+  padding: 0px 15px;
+}
+.create-auction-section .create-auction-button-box {
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-evenly;
+}
+.create-auction-section .create-auction-button-box button {
+  width: 200px;
+  height: 50px;
+}
+.create-auction-section input {
+  margin-bottom: 15px;
+}
+.create-auction-section textarea {
+  margin-bottom: 15px;
+}
+.create-auction-section select {
+  margin-bottom: 15px;
+}
+
+/*# sourceMappingURL=styles.css.map */

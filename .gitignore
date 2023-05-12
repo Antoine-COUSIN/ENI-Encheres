@@ -28,3 +28,9 @@ hs_err_pid*
 .project
 .classpath
 .settings
+/build/
+
+
+# personnal gitignore
+context.xml
+/bin/

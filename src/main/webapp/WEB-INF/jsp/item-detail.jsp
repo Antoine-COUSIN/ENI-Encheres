@@ -60,9 +60,24 @@
 						
 						<c:choose>
 						    <c:when test="${isConnected}">
-						        <label>Ma proposition : </label>
-						        <input type="number" name="bid"/>
-						        <button class="btn btn-primary" type="submit">Enchérir</button>
+						    
+						    	<fmt:parseDate value="${nowDate}" pattern="yyyy-MM-dd'T'HH:mm" var="nowDate"/>
+								<fmt:formatDate value="${nowDate}" pattern="dd-MM-yyyy HH:mm" var="nowDate" />
+								
+								<fmt:parseDate value="${selectedItem.end_auction}" pattern="yyyy-MM-dd'T'HH:mm" var="end_auction"/>
+								<fmt:formatDate value="${end_auction}" pattern="dd-MM-yyyy HH:mm" var="end_auction" />
+				
+								<c:if test="${ nowDate <  end_auction}">
+									<label>Ma proposition : </label>
+							        <input type="number" name="bid"/>
+							        <button class="btn btn-primary" type="submit">Enchérir</button>
+								</c:if>
+								<c:if test="${ nowDate >  end_auction}">
+									<p>L'enchère est déja terminée, vous ne pouvez plus enchérir dessus...</p>
+								</c:if>
+						    
+						    
+						        
 						    </c:when>
 						    <c:otherwise>
 						        <a href="login">Connectez-vous pour enchérir</a>

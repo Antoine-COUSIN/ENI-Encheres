@@ -252,7 +252,7 @@ header{
 /******************************************************/
 /* AUCTION LIST SECTION */
 .auction-list-section{
-		h2{
+	h2{
 		text-align: center;
 		display: flex;
 		flex-direction: column;
@@ -267,6 +267,7 @@ header{
 		content: "";
 		margin: 5px 0px;
     }
+    
 	.auction-list-storage{
 		display: flex;
 		flex-wrap: wrap;
@@ -290,7 +291,143 @@ header{
 	}
 }
 
+/******************************************************/
+/* SHOW PROFIL SECTION */
+.show-profil{
+	h2{
+		margin-bottom: 50px;
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+		
+	h2::after{
+		display: block;
+		height: 2px;
+		background-color: rgb(241, 78, 56);
+		width: 125px;
+		content: "";
+		margin: 5px 0px;
+    }
+    
+    .profile-label{
+		display: flex;
+		flex-direction: column;
+	}
+	
+	.profile-value{
+		display: flex;
+		flex-direction: column;
+	}
+	
+	.update-profile{
+		display: flex;
+		justify-content: center;
+		
+		button{
+			margin-top: 25px;
+			width: 200px;
+			height: 50px;
+		}
+	}
+}
 
+/******************************************************/
+/* ITEM DETAIL SECTION */
+.item-detail-section{
+	h2{
+		margin-bottom: 50px;
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+		
+	h2::after{
+		display: block;
+		height: 2px;
+		background-color: rgb(241, 78, 56);
+		width: 125px;
+		content: "";
+		margin: 5px 0px;
+    }
+    
+    .article-img-box{
+		display: flex;
+		justify-content: end;
+		padding-right: 25px;
+	}
+    
+    .article-auction-box{
+		display: flex;
+		justify-content: center;
+		
+		button{
+			width: 100px;
+			height: 50px;
+		}
+	}
+}
+
+/******************************************************/
+/*CREATE AUCTION  SECTION */
+.create-auction-section{
+	h2{
+		margin-bottom: 50px;
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+		
+	h2::after{
+		display: block;
+		height: 2px;
+		background-color: rgb(241, 78, 56);
+		width: 125px;
+		content: "";
+		margin: 5px 0px;
+    }
+    
+    .upload-preview-img-box{
+		display: flex;
+		justify-content: center;
+		
+		img{
+			width: 75%;
+			height: auto;
+		}
+	}
+    
+    fieldset{
+		border: 1px solid black;
+		padding: 0px 15px;
+	}
+    
+    .create-auction-button-box{
+		margin-top: 25px;
+		display: flex;
+		justify-content: space-evenly;
+		
+		button{
+			width: 200px;
+			height: 50px;
+		}
+	}
+	
+	input{
+		margin-bottom: 15px;
+	}
+	
+	textarea{
+		margin-bottom: 15px;
+	}
+	
+	select{
+		margin-bottom: 15px;
+	}
+}
 
 
 

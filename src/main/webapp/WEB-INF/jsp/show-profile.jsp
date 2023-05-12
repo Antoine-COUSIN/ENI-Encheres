@@ -11,19 +11,50 @@
 <body>
 	<%@include file="../fragments/header.jspf" %>
 	
-	<div>
-		<p>Pseudo : ${ user.pseudo }</p>
-		<p>Nom : ${ user.lastName }</p>
-		<p>Prénom : ${ user.firstName }</p>
-		<p>Email : ${ user.email }</p>
-		<p>Téléphone : ${ user.phoneNumber }</p>
-		<p>Rue : ${ user.streetAddress }</p>
-		<p>Code postal : ${ user.postalCodeAddress }</p>
-		<p>Ville : ${ user.cityAddress }</p>
-			
-		<a href="updateProfile" >Modifier</a>
-			
-	</div>
+	<section class="show-profil container">
+		<div class="row">
+			<div class="col-12">
+				<h2>Mon profil</h2>
+			</div>
+		</div>
 		
+		<div class="row">
+			<div class="col-4"></div>
+			<div class="col-2">
+				<div class="profile-label">
+					<span>Pseudo :</span>
+					<span>Nom :</span>
+					<span>Prénom :</span>
+					<span>Email :</span>
+					<span>Téléphone :</span>
+					<span>Rue :</span>
+					<span>Code postal :</span>
+					<span>Ville :</span>	
+				</div>
+			</div>
+			
+			<div class="col-2">
+				<div class="profile-value">
+					<span>${ user.pseudo }</span>
+					<span>${ user.lastName }</span>
+					<span>${ user.firstName }</span>
+					<span>${ user.email }</span>
+					<span>${ user.phoneNumber }</span>
+					<span>${ user.streetAddress }</span>
+					<span>${ user.postalCodeAddress }</span>
+					<span>${ user.cityAddress }</span>
+				</div>
+			</div>
+			<div class="col-4"></div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<div class="update-profile">
+					<a href="updateProfile" ><button class="btn btn-primary">Modifier</button></a>
+				</div>
+			</div>
+		</div>
+	</section>
+		root
 	<%@include file="../fragments/footer.jspf" %>
 </body>

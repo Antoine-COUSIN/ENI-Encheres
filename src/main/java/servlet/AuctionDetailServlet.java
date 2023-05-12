@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -40,6 +41,8 @@ public class AuctionDetailServlet extends HttpServlet {
 		Auctions selectedBid = bidBLL.getBidInfo(no_article);
 		PickupPoint selectedPickupPoint = articleBLL.getSelectedItemPickupPoint(no_article);
 		User userVendor = userBLL.getUser(selectedItem.getNo_user());
+		LocalDateTime nowDate = LocalDateTime.now();
+		request.setAttribute("nowDate", nowDate);
 		request.setAttribute("userVendor", userVendor);
 		request.getSession().setAttribute("selectedBid", selectedBid);
 		request.getSession().setAttribute("selectedItem", selectedItem);
